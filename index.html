@@ -2,25 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
 <title>河洛泡泡</title>
 <link rel="stylesheet" type="text/css" href="css/base.css">
 <link rel="stylesheet" type="text/css" href="css/v_menu.css">
 <link rel="stylesheet" type="text/css" href="css/banner.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
+
+
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="js/foucs.js"></script>
-<script type="text/javascript" src="js/gotop.js"></script>
+<script type="text/javascript" src="js/avalon.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<!-- <script data-main="js/main" src="js/require.js"></script> -->
+
+
 </head>
 
-
-
-<body>
+<body ms-controller="test">
 <div class="v_menu">
 <div class="v_menu_w">
 <a href="index.html" class="logo"><img src="images/logo.png" /></a>
 <ul>
-<li><a href="index.html">首页</a></li>
+<li><a href="index.html">{{@name}}</a></li>
 <li><a href="activity_list.html">活动</a></li>
 </ul>
 <form class="search" target="_blank" method="post"><input type="text" placeholder="" value="搜索你想要的活动" /><button><span class="search_icon"></span></button></form>

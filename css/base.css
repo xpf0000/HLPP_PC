@@ -26,3 +26,7 @@ dl dt{float:left}dl dd{float:right}
 .bor_top{border-top: 1px solid #e6e6e6;}
 .blue{ color:#005EA7}.org{ color:#FF6600}
 
+.ms-controller{
+     visibility: hidden;
+  }
+
