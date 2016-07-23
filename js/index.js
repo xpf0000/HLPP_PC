@@ -9,7 +9,49 @@ var page = 1;
 requirejs(['./main'], function (main) {
     
     
-    require(['jquery','avalon','domReady!'], function(jquery,avalon) {
+    require(['jquery','mmRouter','domReady!'], function(jquery,avalon) {
+	    
+	    
+/*  路由   单页应用比较适用
+	  var model = avalon.define({
+                    $id: "test",
+                    currPath: "",
+                    params: {},
+                    query: {},
+                    args: "[]"
+                });
+                
+                
+                function callback() {
+	                
+	                alert("#############");
+	                
+                    model.currPath = this.path
+                    var params = this.params
+                    if ("time" in params) {
+                        params.time = avalon.filters.date(params.time, "yyyy年M月dd日")
+                    }
+                    model.params = params
+                    model.args = "[" + [].slice.call(arguments).join(",") + "]"
+                    model.query = this.query
+                };
+                
+                
+                avalon.router.get("/list.html", callback)
+                
+                
+                avalon.history.start({
+                    basepath: "/"
+                });
+                
+                
+                avalon.scan()  ;
+*/
+	    
+	    
+	    
+	    
+	    
 	    
     bannerModel = avalon.define({
 	    

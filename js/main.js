@@ -15,8 +15,6 @@ require.config({
     },
     shim:{
         avalon: { exports: "avalon" },
-        mmAnimate:{ deps: ['avalon']},
-        mmHistory:{ deps: ['avalon']},
-        mmRouter:{ deps: ['avalon']},
+        mmAnimate:{ deps: ['avalon']},    
     }
 });
