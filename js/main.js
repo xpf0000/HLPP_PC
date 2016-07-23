@@ -1,4 +1,4 @@
-
+var BaseUrl = "http://182.92.70.85/hlppapi/";
 require.config({
     baseUrl: 'js',  //相对于index.html页面文件的地址
     paths:{   //这里配置的地址，都是相对于上方的baseUrl的
@@ -12,12 +12,10 @@ require.config({
         gotop : 'gotop',
         foucs : 'foucs',
         mmAnimate : 'mmAnimate',
-        mmRequest : 'mmRequest',
     },
     shim:{
         avalon: { exports: "avalon" },
         mmAnimate:{ deps: ['avalon']},
-        mmRequest:{ deps: ['avalon']},
         mmHistory:{ deps: ['avalon']},
         mmRouter:{ deps: ['avalon']},
     }

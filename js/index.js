@@ -1,383 +1,149 @@
 
-var vm;
+var bannerModel;
+var tjModel;
+var clickModel;
+var pahangModel;
 var vmodel;
+var page = 1;
 
 requirejs(['./main'], function (main) {
     
     
-    require(['jquery','mmRequest','domReady!'], function(jquery,avalon) {
+    require(['jquery','avalon','domReady!'], function(jquery,avalon) {
 	    
-	
-/*
-	var str = "111000222";
-	
-	alert(str.replace("000", "333"));
-*/
-	
-/*
-    vm = avalon.define({
-        $id: "test",
-        name:"images/banner001.jpg",
-        arr : ['images/banner001.jpg','images/banner001.jpg','images/banner001.jpg']
-        //pageUrl:"mine.html"  //默认为mine.html
-   
-    });
-*/
-    
-    var url = "http://101.201.169.38/api/Public/Found/?service=News.getGuanggao&typeid=83";
-    
-    var corssDomain = '//101.201.169.38';
-    
-    
-    vmodel = avalon.define({
+    bannerModel = avalon.define({
 	    
-		$id: 'test',
-		name:'5454545454',
-		// serialize
-		serializeStr: '',
-		serialize: function(){
+        $id: "banner",
+        
+        info : [],
 
-			var str = avalon.serialize(document.getElementById('test-form'));
+    }); 
+    
+    pahangModel = avalon.define({
+	    
+        $id: "paihang",
+        
+        info : [],
 
-			avalon.log(str);
-			vmodel.serializeStr = str;
-		},
+    }); 
+    
+    
+    tjModel = avalon.define({
+	    
+        $id: "huodong",
+        
+        info : [],
+        
+        nextPageClick: function() {
 
-		// ajax
-		state: {
-			text: '无请求',
-			setSend: function(sendType) {
-				vmodel.state.text = sendType + ' 请求中...';
-			},
-			setSucc: function(data) {
-				vmodel.state.text = '请求成功！请求类型：' + data.sendType;
-			}
-		},
-
-		// get
-		get: function() {
-			var sendType = 'avalon.get';
-			vmodel.state.setSend(sendType);
-
-			avalon.get(url, {
-				sendType: sendType,
-				arr: ['html', 'css', 'js']
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-		ajaxGet: function() {
-			var sendType = 'type 为 \'get\' 的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: url,
-				type: 'get',
-				cache: false,
-				data: {
-					sendType: sendType
-				}
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-
-		// post
-		post: function() {
-			var sendType = 'avalon.post';
-			vmodel.state.setSend(sendType);
-
-			avalon.post('/api?age=12', {
-				sendType: sendType
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-		ajaxPost: function() {
-			var sendType = 'type 为 \'post\' 的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: url,
-				type: 'post',
-				data: {
-					sendType: sendType
-				}
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-
-		// upload
-		upload: function() {
-			var sendType = 'avalon.upload',
-				formData = new FormData();
-
-			formData.append('sendType', sendType);
-			vmodel.state.setSend(sendType);
-
-			avalon.upload('/api?age=12', formData, {
-				name: 'avalon'
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-		ajaxUpload: function(){
-			var sendType = '拥有 form 的 avalon.ajax',
-				formData = new FormData();
-
-			formData.append('sendType', sendType);
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: url,
-				form: formData,
-				data: {
-					name: 'avalon'
-				},
-				type: 'post'
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-
-		// getJSON
-		getJSON: function() {
-			var sendType = 'avalon.getJSON';
-			vmodel.state.setSend(sendType);
-
-			avalon.getJSON('http://101.201.169.38/api/Public/Found/?service=News.getGuanggao&typeid=83', {
-				sendType: sendType
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
+		getTj();
 		
-		
-		ajaxGetJSON: function() {
-			var sendType = 'dataType 为 \'json\' 的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: url,
-				data: {
-					sendType: sendType
-				},
-				dataType: 'json',
-				cache: false
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-
-		// getScript
-		getScript: function() {
-			var sendType = 'avalon.getScript';
-			vmodel.state.setSend(sendType);
-
-			avalon.getScript('/js/test.js', function() {
-				avalon.log(arguments)
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc({
-					sendType: sendType
-				});
-			});
-		},
-		ajaxGetScript: function(){
-			var sendType = 'dataType 为 \'script\' 的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: '/js/test.js',
-				data: {
-					sendType: sendType
-				},
-				dataType: 'script',
-				cache: false
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc({
-					sendType: sendType
-				});
-			});
-		},
-		ajaxGetScriptNoDataType: function(){
-			var sendType = '未设置 dataType 的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: '/js/test.js',
-				data: {
-					sendType: sendType
-				}
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc({
-					sendType: sendType
-				});
-			});
-		},
-
-		// 跨域
-		corsAjax: function(){
-			var sendType = '使用 jsonp 跨域的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: corssDomain + '/jsonp',
-				data: {
-					sendType: sendType
-				},
-				dataType: 'jsonp',
-				cache: false
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-		corsGetJSON: function() {
-			var sendType = '通过 url 后缀识别跨域的 avalon.getJSON';
-			vmodel.state.setSend(sendType);
-
-			avalon.getJSON(corssDomain + '/jsonp?callback=?', {
-				sendType: sendType
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-		corsAjaxGetJSON: function() {
-			var sendType = '通过 url 后缀识别跨域的 avalon.ajax';
-			vmodel.state.setSend(sendType);
-
-			avalon.ajax({
-				url: corssDomain + '/jsonp?callback=?',
-				data: {
-					sendType: sendType
-				},
-				dataType: 'json',
-				cache: false
-			}).done(function(res) {
-				avalon.log(res);
-				vmodel.state.setSucc(res);
-			});
-		},
-
-		// promise
-		promiseDone: function() {
-			avalon.ajax({
-				url: url,
-				type: 'get',
-				cache: false,
-				data: {
-					test: 'send me back'
-				},
-				success: function() {
-					avalon.log('success')
-				}
-			}).done(function() {
-				avalon.log('done-1')
-				avalon.log(arguments);
-			}).always(function() {
-				avalon.log('always-1')
-				avalon.log(arguments)
-			}).done(function() {
-				avalon.log('done-2')
-			}).fail(function() {
-				avalon.log('fail')
-			}).always(function() {
-				avalon.log('always-2')
-				avalon.log(arguments)
-			});
-		},
-		promiseFail: function() {
-			avalon.ajax({
-				url: '/err',
-				type: 'get',
-				cache: false,
-				data: {
-					test: 'send me back'
-				},
-				error: function() {
-					avalon.log('error')
-				}
-			}).always(function() {
-				avalon.log('always-1')
-				console.log(arguments)
-			}).done(function() {
-				avalon.log('done')
-				avalon.log(arguments);
-			}).fail(function() {
-				avalon.log('fail-1')
-				console.log(arguments)
-			}).fail(function() {
-				avalon.log('fail-2')
-				console.log(arguments)
-			}).always(function() {
-				avalon.log('always-2')
-				console.log(arguments)
-			});
-		},
-
-		// 全局事件
-		bindGlobalEventHandlers: function() {
-			console.log('已绑定全局事件')
-
-			var ajaxGlobalEvents = avalon.ajaxGlobalEvents
-
-			ajaxGlobalEvents.start = function() {
-				console.log('g---start')
-			}
-			ajaxGlobalEvents.send = function() {
-				console.log('g---send', arguments)
-			}
-			ajaxGlobalEvents.success = function() {
-				console.log('g---success', arguments)
-			}
-			ajaxGlobalEvents.error = function() {
-				console.log('g---error', arguments)
-			}
-			ajaxGlobalEvents.complete = function() {
-				console.log('g---complete', arguments)
-			}
-			ajaxGlobalEvents.stop = function() {
-				console.log('g---stop')
-			}
 		}
 
+    }); 
+    
+    
+    clickModel = avalon.define({
+	    
+        $id: "pageClick",
+        
+        msg : '点击加载更多',
+        
+        end : false,
+        
+        nextPageClick: function() {
+		
+		getTj();
+		
+		}
 
-
-
-	});
+    });
     
-    
-    
-    
-    aaa();
-    
-    
+    getBanner();
+    getTj();
+    getPaihang();
     
   });      
 });
 
 
 
-
-
-function aaa()
+function getBanner()
 {
-	//vmodel.getJSON();
-	//vmodel.corsGetJSON();
-	vmodel.corsAjax();
+	
+	var url = BaseUrl+"Public/Found/?service=common.getguanggao&typeid=7";
+   
+	$.support.cors = true;
+	
+	$.getJSON( url, function(data) 
+	{
+		bannerModel.info = data.data.info;
+
+	});
+	
+}
+
+function getTj()
+{
+	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page="+page+"&perNumber=20";
+   
+	$.support.cors = true;
+	
+	$.getJSON( url, function(data) 
+	{
+		var info = data.data.info;
+		
+		if(info)
+		{
+			
+			
+			$(info).each(function(index,item)
+			{
+				item.s_time_str = $.myTime.UnixToDate(item.s_time);
+			});
+			
+			
+			tjModel.info = tjModel.info.concat(data.data.info);
+			
+			page = page + 1;
+			
+			if(info.length<20)
+			{
+				clickModel.end = true;
+				clickModel.msg = '已无更多!';
+			}
+		}
+		
+		
+
+	});
+}
+
+
+
+function getPaihang()
+{
+	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page=1&perNumber=10";
+   
+	$.support.cors = true;
+	
+	$.getJSON( url, function(data) 
+	{
+		var info = data.data.info;
+		
+		if(info)
+		{
+			$(info).each(function(index,item)
+			{
+				item.s_time_str = $.myTime.UnixToDateFormat(item.s_time, "MM月dd日 mm:ss");
+			});
+			
+			pahangModel.info = info;
+		}
+		
+		
+
+	});
 }
 
 
