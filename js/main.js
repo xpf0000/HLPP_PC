@@ -1,6 +1,6 @@
 var BaseUrl = "http://182.92.70.85/hlppapi/";
 require.config({
-    baseUrl: 'js',  //相对于index.html页面文件的地址
+    baseUrl: '../js/lib',  //相对于index.html页面文件的地址
     paths:{   //这里配置的地址，都是相对于上方的baseUrl的
         avalon: 'avalon',
         domReady:'domReady',
@@ -18,3 +18,29 @@ require.config({
         mmAnimate:{ deps: ['avalon']},    
     }
 });
+
+
+
+
+requirejs(['main'], function (main) {
+    
+    
+    require(['jquery','domReady!'], function(jquery,avalon) {
+	    
+	    
+	    $("#header").load("../view/common/header.html");
+
+})
+});
+
+
+
+function onlyNumber(event){
+	
+	//alert("^^^^^^^^^^");
+	
+    var keyCode = event.keyCode;
+    if(keyCode<48 || keyCode>57){
+        event.keyCode = 0;
+    }
+}

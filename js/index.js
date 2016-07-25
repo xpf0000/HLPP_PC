@@ -6,14 +6,15 @@ var pahangModel;
 var vmodel;
 var page = 1;
 
-requirejs(['./main'], function (main) {
+requirejs(['main'], function (main) {
     
     
-    require(['jquery','mmRouter','domReady!'], function(jquery,avalon) {
+    require(['jquery','avalon','domReady!'], function(jquery,avalon) {
 	    
 	    
-/*  路由   单页应用比较适用
-	  var model = avalon.define({
+/*
+		路由   单页应用比较适用
+		var model = avalon.define({
                     $id: "test",
                     currPath: "",
                     params: {},
@@ -48,8 +49,15 @@ requirejs(['./main'], function (main) {
                 avalon.scan()  ;
 */
 	    
-	    
-	    
+	    avalon.define({  
+            $id: "test",  
+            xxx: "引入内部模板",
+            render: function(tmpl) {
+			
+			alert("$$$$$$$$$$$$$$$");
+			
+			},
+        }); 
 	    
 	    
 	    
