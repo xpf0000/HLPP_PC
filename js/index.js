@@ -59,19 +59,23 @@ requirejs(['main'], function (main) {
 			},
         }); 
 	    
-	    
-	    
-    bannerModel = avalon.define({
+	bannerModel = avalon.define({
 	    
         $id: "banner",
         
         info : [],
 
-    }); 
-    
+    });  
+	    
+
     pahangModel = avalon.define({
 	    
         $id: "paihang",
+        
+        id : '',
+        picurl : '',
+        url : '',
+        title : '',
         
         info : [],
 
@@ -110,8 +114,10 @@ requirejs(['main'], function (main) {
     });
     
     getBanner();
+    getRBanner();
     getTj();
     getPaihang();
+    
     
   });      
 });
@@ -132,6 +138,29 @@ function getBanner()
 	});
 	
 }
+
+function getRBanner()
+{
+	
+	var url = BaseUrl+"Public/Found/?service=common.getguanggao&typeid=8";
+   
+	$.support.cors = true;
+	
+	$.getJSON( url, function(data) 
+	{
+		if(data.data.info.length > 0)
+		{
+			pahangModel.id = data.data.info[0].id;
+			pahangModel.picurl = data.data.info[0].picurl;
+			pahangModel.url = data.data.info[0].url;
+			pahangModel.title = data.data.info[0].title;
+		}
+		
+
+	});
+	
+}
+
 
 function getTj()
 {
@@ -173,7 +202,7 @@ function getTj()
 
 function getPaihang()
 {
-	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page=1&perNumber=10";
+	var url = BaseUrl+"Public/Found/?service=Plans.getListRM";
    
 	$.support.cors = true;
 	

@@ -4900,7 +4900,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    validateInKeyup: true, //@config {Boolean} true，在keyup事件中进行验证,触发onSuccess, onError, onComplete回调
 	    validateAllInSubmit: true, //@config {Boolean} true，在submit事件中执行onValidateAll回调
 	    resetInFocus: true, //@config {Boolean} true，在focus事件中执行onReset回调,
-	    deduplicateInValidateAll: false //@config {Boolean} false，在validateAll回调中对reason数组根据元素节点进行去重
+	    deduplicateInValidateAll: true //@config {Boolean} false，在validateAll回调中对reason数组根据元素节点进行去重
 	}
 
 /***/ },

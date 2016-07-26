@@ -23,36 +23,41 @@
 	
 	<form ms-validate="@validate">
 	
-<ul class="">
+<ul>
 	
 <li style="height:40px; line-height:40px;">请认真填写以下信息：<span style="color: red"> {{@message}} </span></li>
 <!-- <li><img src="../images/temp/yanzheng.jpg" width="322" height="66" /></li> -->
 
 <li>
-<input id="mob" ms-duplex="@mob" ms-rules='{required:true,pattern:/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/}' name="mod_no" type="number" placeholder="请输入你的手机号" class="login_text"/>
+<input id="mob" ms-rules='{required:true,pattern:/0?(13|15|18|17)[0-9]{9}/}' ms-duplex="@mob" data-required-message="请输入你的手机号" data-message="请输入正确的手机号" name="mod_no" type="tel" placeholder="请输入你的手机号" class="login_text" maxlength="11" style="ime-mode:disabled;" onkeypress="onlyNumber"/> 
 </li>
 
 <li class="rel">
-<input name="paddword" type="password" placeholder="验证码" class="login_text"/><button class="login_yzm abs tc db f14">获取验证码</button>
+<input name="paddword" ms-rules="{required:true}" ms-duplex="@paddword" data-required-message="请输入验证码" type="text" placeholder="验证码" class="login_text"/>
+
+<button class="login_yzm abs tc db f14" ms-click="@sendCodeClick()" ms-attr="{disabled: @mobDisabled}">{{@code}}</button>
+
+<!-- <span style="color: red"> {{@pwMsg}} </span> -->
 </li>
 
 <li>
-<input id="pw" ms-rules='{required:true}' ms-duplex="@pw" name="mod_no" type="password" placeholder="登录密码" class="login_text"/>
+<input id="pw" ms-rules='{required:true,minlength:6,maxlength:18}' ms-duplex="@pw" data-required-message="请输入登录密码" data-message="密码长度为6-18位" name="mod_no" type="password" placeholder="登录密码" class="login_text"/>
 </li>
 
 <li>
-<input ms-rules="{required:true,equalto:'pw'}" ms-duplex="@cpw | change" name="paddword" type="text" placeholder="确认登录密码" class="login_text"/>
+<input id="cpw" ms-rules="{required:true,equalto:'pw'}" ms-duplex="@cpw | change" data-required-message="请输入确认登录密码" data-message="密码和确认密码不一致" name="paddword" type="password" placeholder="确认登录密码" class="login_text"/>
 </li>
 
 <li style="height:40px; line-height:40px;">
 <span class="db fl">
 
-<input type="checkbox" id="checkbox-2-1"  ms-duplex-checked="@agree" ms-rules="{checked:true}" class="regular-checkbox big-checkbox" />
+<input type="checkbox" id="checkbox-2-1"  ms-duplex-checked="@agree" ms-rules="{checked:true}" data-message="请同意网站注册协议" class="regular-checkbox big-checkbox" />
 
 <label for="checkbox-2-1">
 </label>
 </span>
 <span class="reg_agreement f14 fl"><a href="">我已阅读并同意网站注册协议</a></span>
+
 <div class="clear"></div>
 </li>
 
@@ -63,14 +68,21 @@
 	</form>
 
 </div>
+
+<!-- 第三方登录 -->
+<!--
 <div class="login_line re_p"><span class="db">使用以下账号登录</span></div>
-<div class="login_icon re_p">
-<ul>
-<li><a href=""><span class="wx_login_icon db"></span></a></li>
-<li><a href=""><span class="qq_login_icon db"></span></a></li>
+<div class="login_icon re_p">	
+<ul>	
+<li><span ms-click="@wxLogin()" class="wx_login_icon db"></span></li>
+
+<li><span ms-click="@qqLogin()" class="qq_login_icon db"></span></li>
 </ul>
 <div class="clear"></div>
 </div>
 </div>
+-->
+
+
 </body>
 </html>
