@@ -1,4 +1,5 @@
 var BaseUrl = "http://182.92.70.85/hlppapi/";
+var User;
 require.config({
     baseUrl: '../js/lib',  //相对于index.html页面文件的地址
     paths:{   //这里配置的地址，都是相对于上方的baseUrl的
@@ -12,7 +13,11 @@ require.config({
         gotop : 'gotop',
         foucs : 'foucs',
         mmAnimate : 'mmAnimate',
-        validate : "jquery.validate.min"
+        validate : "jquery.validate.min",
+        net: 'XRequest',
+        spin: 'spin.min',
+        header: '../header',
+        showDialog: 'showDialog.min',
     },
     shim:{
         avalon: { exports: "avalon" },
@@ -21,21 +26,37 @@ require.config({
 });
 
 
-
-
-requirejs(['main'], function (main) {
-    
-    
-    require(['jquery','domReady!'], function(jquery,avalon) {
+require(['jquery','net','header','avalon','domReady!'], function(jquery,net,header,avalon) {
 	    
 	    
-	    $("#header").load("../view/common/header.html");
+	    User = avalon.define({
+	    
+        $id: "User",
+        
+        id : '0',
+        
+        username: '用户名',
+
+    }); 
+
+	    
+	    
+	    $("#header").load("../view/common/header.html",function(){
+		    
+		    $("#login").load("../view/common/login.html",function()
+		    {
+			    
+			    avalon.scan();
+			    
+		    });
+		     
+	    });
+	    
 
 })
-});
 
 
-
+//只能输入数字
 function onlyNumber(event){
 	
 
@@ -95,5 +116,7 @@ function getCookieValue(name){
    } 
      
 }
+
+
 
 

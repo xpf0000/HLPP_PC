@@ -8,7 +8,7 @@ var page = 1;
 requirejs(['main'], function (main) {
     
     
-    require(['jquery','mmRouter','domReady!'], function(jquery,avalon) {
+    require(['avalon','domReady!'], function(avalon) {
 	    
 	        
     pahangModel = avalon.define({
@@ -62,9 +62,9 @@ function getTj()
 {
 	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page="+page+"&perNumber=20";
    
-	$.support.cors = true;
 	
-	$.getJSON( url, function(data) 
+	
+	XHttpGet( url, function(data) 
 	{
 		var info = data.data.info;
 		
@@ -100,9 +100,9 @@ function getPaihang()
 {
 	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page=1&perNumber=10";
    
-	$.support.cors = true;
 	
-	$.getJSON( url, function(data) 
+	
+	XHttpGet( url, function(data) 
 	{
 		var info = data.data.info;
 		

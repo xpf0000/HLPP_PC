@@ -1,12 +1,42 @@
 
 var vm;
 
+var spinner;
+
 requirejs(['main'], function (main) {
     
     
-    require(['jquery','avalon','domReady!'], function(jquery,avalon) {
+    require(['spin','avalon','domReady!'], function(Spinner,avalon) {
 	    
     $("#mob").keydown(onlyNumber);
+    
+    
+/*   遮罩  需要设计上层遮罩
+    var opts = {            
+            lines: 13, // 花瓣数目
+            length: 20, // 花瓣长度
+            width: 10, // 花瓣宽度
+            radius: 30, // 花瓣距中心半径
+            corners: 1, // 花瓣圆滑度 (0-1)
+            rotate: 0, // 花瓣旋转角度
+            direction: 1, // 花瓣旋转方向 1: 顺时针, -1: 逆时针
+            color: '#5882FA', // 花瓣颜色
+            speed: 1, // 花瓣旋转速度
+            trail: 60, // 花瓣旋转时的拖影(百分比)
+            shadow: false, // 花瓣是否显示阴影
+            hwaccel: false, //spinner 是否启用硬件加速及高速旋转            
+            className: 'spinner', // spinner css 样式名称
+            zIndex: 2e9, // spinner的z轴 (默认是2000000000)
+            top: 'center', // spinner 相对父容器Top定位 单位 px
+            left: 'center'// spinner 相对父容器Left定位 单位 px
+        };
+    
+		
+    var target = document.getElementById('main');
+	var spinner = new Spinner().spin(target);
+*/
+
+
     
     vm = avalon.define({
         $id: "validate1",
@@ -154,7 +184,6 @@ requirejs(['main'], function (main) {
     }
     
     
-    
     initTime();
     
     
@@ -167,10 +196,10 @@ function doRegist()
 {
 	
 	var url = BaseUrl+"Public/Found/?service=User.register&mobile="+vm.mob+"&password="+vm.pw+"&code="+vm.paddword+"&nickname=";
-   
-	$.support.cors = true;
+ 
 	
-	$.getJSON( url, function(data) 
+	
+	XHttpGet( url, function(data) 
 	{
 		
 		console.log(data);
@@ -197,9 +226,9 @@ function sendCode()
 {
 	
 	var url = BaseUrl+"Public/Found/?service=User.getUserM&mobile="+vm.mob; 
-	$.support.cors = true;
 	
-	$.getJSON( url, function(data) 
+	
+	XHttpGet( url, function(data) 
 	{
 		var code = data.data.code;
 		
@@ -212,9 +241,9 @@ function sendCode()
 
 		var url = BaseUrl+"Public/Found/?service=User.smsSend&mobile="+vm.mob+"&type=1";
    
-		$.support.cors = true;
+		
 	
-		$.getJSON( url, function(data) 
+		XHttpGet( url, function(data) 
 		{
 			var info = data.data.info;
 		

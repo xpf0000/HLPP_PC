@@ -9,7 +9,7 @@ var page = 1;
 requirejs(['main'], function (main) {
     
     
-    require(['jquery','avalon','domReady!'], function(jquery,avalon) {
+     require(['avalon','domReady!'], function(avalon) {
 	    
 	    
 /*
@@ -128,10 +128,8 @@ function getBanner()
 {
 	
 	var url = BaseUrl+"Public/Found/?service=common.getguanggao&typeid=7";
-   
-	$.support.cors = true;
 	
-	$.getJSON( url, function(data) 
+	XHttpGet(url,function(data) 
 	{
 		bannerModel.info = data.data.info;
 
@@ -144,9 +142,8 @@ function getRBanner()
 	
 	var url = BaseUrl+"Public/Found/?service=common.getguanggao&typeid=8";
    
-	$.support.cors = true;
-	
-	$.getJSON( url, function(data) 
+
+	XHttpGet( url, function(data) 
 	{
 		if(data.data.info.length > 0)
 		{
@@ -166,9 +163,9 @@ function getTj()
 {
 	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page="+page+"&perNumber=20";
    
-	$.support.cors = true;
 	
-	$.getJSON( url, function(data) 
+	
+	XHttpGet( url, function(data) 
 	{
 		var info = data.data.info;
 		
@@ -204,9 +201,9 @@ function getPaihang()
 {
 	var url = BaseUrl+"Public/Found/?service=Plans.getListRM";
    
-	$.support.cors = true;
 	
-	$.getJSON( url, function(data) 
+	
+	XHttpGet( url, function(data) 
 	{
 		var info = data.data.info;
 		
