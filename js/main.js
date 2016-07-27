@@ -18,6 +18,8 @@ require.config({
         spin: 'spin.min',
         header: '../header',
         showDialog: 'showDialog.min',
+        datepicker: 'jquery.datetimepicker.full',
+        jmousewheel: 'jquery.mousewheel',
     },
     shim:{
         avalon: { exports: "avalon" },
