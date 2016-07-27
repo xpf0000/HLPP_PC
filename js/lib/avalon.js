@@ -4788,12 +4788,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (validator.deduplicateInValidateAll) {
 	                var uniq = {}
 	                reasons = reasons.filter(function (field) {
-	                    var el = field.dom
+		                
+		                //console.log(field.element.uniqueID);
+		                
+/*
+	                    var el = field.dom	                   
 	                    var uuid = el.uniqueID || (el.uniqueID = setTimeout("1"))
-	                    if (uniq[uuid]) {
+*/
+	                    
+	                    
+	                    if (uniq[field]) {
 	                        return false
 	                    } else {
-	                        uniq[uuid] = true
+	                        uniq[field] = true
 	                        return true
 	                    }
 	                })

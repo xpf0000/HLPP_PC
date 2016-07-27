@@ -6,7 +6,7 @@ var spinner;
 requirejs(['main'], function (main) {
     
     
-    require(['spin','avalon','domReady!'], function(Spinner,avalon) {
+    require(['jquery','avalon','domReady!'], function(jquery,avalon) {
 	    
     $("#mob").keydown(onlyNumber);
     
@@ -89,7 +89,6 @@ requirejs(['main'], function (main) {
 	                
                     console.log(reason.getMessage())
                     
-                   return;
                 })
                 
             },
@@ -183,6 +182,8 @@ requirejs(['main'], function (main) {
         }
     }
     
+    
+    avalon.scan(document.getElementById('registVC'));
     
     initTime();
     

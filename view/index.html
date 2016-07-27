@@ -16,14 +16,14 @@
 
 </head>
 
-<body >
+<body id="indexVC" ms-controller="indexVC" class="min-width ms-controller">
 
 <!-- 加载头部 -->
 <div id="header"></div>	
 
 
 <!-- 添加banner标题控制域 ms-controller="banner"   未加载数据前隐藏 ms-controller -->
-<div ms-controller="banner" class="mainbanner min-width ms-controller">
+<div class="mainbanner min-width">
 	
   <div class="mainbanner_window">
     <div id="focus">
@@ -31,7 +31,7 @@
         <ul class="focus-bar">
 	        
 <!-- 	        数据循环 -->
-	        <li ms-for="el in @info" class="focus-1"> <a href=""> <img ms-attr="{src: el.picurl }" width="1440" height="352"  alt=""/></a></li>
+	        <li ms-for="el in @banner" class="focus-1"> <a href=""> <img ms-attr="{src: el.picurl }" width="1440" height="352"  alt=""/></a></li>
 	         
         </ul>
          </div>
@@ -47,9 +47,9 @@
 	
 	
 <!-- 	左侧活动 -->
-<ul ms-controller="huodong" class="ms-controller">
+<ul>
 	
-<li ms-for="el in @info" class="index_left_list">
+<li ms-for="el in @tj" class="index_left_list">
 <a href="event_info.html"><img ms-attr="{src: el.url}" width="300" height="200" /></a>
 <h3><a href="event_info.html" title="爱洛阳车友会5月21日受邀参加第二届中原泡泡跑活动，约你来一次与泡泡的狂欢派对！">{{el.title}}</a></h3>
 <div><span class="time_icon"></span>{{el.s_time_str}}<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1天</em></div>
@@ -61,14 +61,14 @@
 
 
 <!-- 点击加载下一页 -->
-<div ms-controller="pageClick" ms-click="@nextPageClick()" class="get_more ms-controller">{{@msg}}<img ms-attr="{hidden: @end}" src="../images/arrow.png" width="15" height="15" /></div>
+<div ms-click="@nextPageClick()" class="get_more">{{@msg}}<img ms-attr="{hidden: @end}" src="../images/arrow.png" width="15" height="15" /></div>
 </div>
 
 
 
-<div class="index_right" ms-controller="paihang" class="ms-controller">
+<div class="index_right">
 	
-	<img ms-attr="{src: @picurl}" width="280" height="206" />
+	<img ms-attr="{src: @rbanner.picurl}" width="280" height="206" />
 	
 <div class="index_left_tit">活动排行</div>
 
@@ -76,7 +76,7 @@
 <!-- 活动排行 -->
 <ul >
 	
-<li ms-for="el in @info"  class="index_right_list"><a href="event_info.html" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
+<li ms-for="el in @paihang"  class="index_right_list"><a href="event_info.html" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
 
 </ul>
 

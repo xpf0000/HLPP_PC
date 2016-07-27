@@ -1,117 +1,51 @@
 
-var bannerModel;
-var tjModel;
-var clickModel;
-var pahangModel;
-var vmodel;
 var page = 1;
+var indexModel;
 
 requirejs(['main'], function (main) {
     
     
-     require(['avalon','domReady!'], function(avalon) {
+     require(['avalon','jquery','domReady!'], function(avalon) {
 	    
+  
+	      	    indexModel = avalon.define({
 	    
-/*
-		路由   单页应用比较适用
-		var model = avalon.define({
-                    $id: "test",
-                    currPath: "",
-                    params: {},
-                    query: {},
-                    args: "[]"
-                });
-                
-                
-                function callback() {
-	                
-	                alert("#############");
-	                
-                    model.currPath = this.path
-                    var params = this.params
-                    if ("time" in params) {
-                        params.time = avalon.filters.date(params.time, "yyyy年M月dd日")
-                    }
-                    model.params = params
-                    model.args = "[" + [].slice.call(arguments).join(",") + "]"
-                    model.query = this.query
-                };
-                
-                
-                avalon.router.get("/list.html", callback)
-                
-                
-                avalon.history.start({
-                    basepath: "/"
-                });
-                
-                
-                avalon.scan()  ;
-*/
-	    
-	    avalon.define({  
-            $id: "test",  
-            xxx: "引入内部模板",
-            render: function(tmpl) {
-			
-			alert("$$$$$$$$$$$$$$$");
-			
-			},
-        }); 
-	    
-	bannerModel = avalon.define({
-	    
-        $id: "banner",
+		  		$id: "indexVC",
         
-        info : [],
+		  		banner : [],
+		  		
+		  		tj: [],
+		  		
+		  		paihang: [],
+		  		
+		  		rbanner: {
+			  		
+			  		id : '',
+			  		picurl : '',
+			  		url : '',
+			  		title : ''
+			  		
+		  		},
+		  		
+		  		nextPageClick: function() {
 
-    });  
-	    
-
-    pahangModel = avalon.define({
-	    
-        $id: "paihang",
-        
-        id : '',
-        picurl : '',
-        url : '',
-        title : '',
-        
-        info : [],
-
-    }); 
-    
-    
-    tjModel = avalon.define({
-	    
-        $id: "huodong",
-        
-        info : [],
-        
-        nextPageClick: function() {
-
-		getTj();
+		  			getTj();
 		
-		}
+				},
+				
+				end: false,
+				
+				msg: '点击加载更多',
+				
 
-    }); 
-    
-    
-    clickModel = avalon.define({
-	    
-        $id: "pageClick",
-        
-        msg : '点击加载更多',
-        
-        end : false,
-        
-        nextPageClick: function() {
-		
-		getTj();
-		
-		}
+    			});  
+	      	    
 
-    });
+				console.log('333333');
+
+				avalon.scan(document.getElementById('indexVC'));
+    
+				console.log('444444');
     
     getBanner();
     getRBanner();
@@ -131,8 +65,7 @@ function getBanner()
 	
 	XHttpGet(url,function(data) 
 	{
-		bannerModel.info = data.data.info;
-
+		indexModel.banner = data.data.info;
 	});
 	
 }
@@ -147,10 +80,10 @@ function getRBanner()
 	{
 		if(data.data.info.length > 0)
 		{
-			pahangModel.id = data.data.info[0].id;
-			pahangModel.picurl = data.data.info[0].picurl;
-			pahangModel.url = data.data.info[0].url;
-			pahangModel.title = data.data.info[0].title;
+			indexModel.rbanner.id = data.data.info[0].id;
+			indexModel.rbanner.picurl = data.data.info[0].picurl;
+			indexModel.rbanner.url = data.data.info[0].url;
+			indexModel.rbanner.title = data.data.info[0].title;
 		}
 		
 
@@ -179,14 +112,14 @@ function getTj()
 			});
 			
 			
-			tjModel.info = tjModel.info.concat(data.data.info);
+			indexModel.tj = indexModel.tj.concat(data.data.info);
 			
 			page = page + 1;
 			
 			if(info.length<20)
 			{
-				clickModel.end = true;
-				clickModel.msg = '已无更多!';
+				indexModel.end = true;
+				indexModel.msg = '已无更多!';
 			}
 		}
 		
@@ -214,7 +147,7 @@ function getPaihang()
 				item.s_time_str = $.myTime.UnixToDateFormat(item.s_time, "MM月dd日 mm:ss");
 			});
 			
-			pahangModel.info = info;
+			indexModel.paihang = info;
 		}
 		
 		

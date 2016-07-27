@@ -1,5 +1,5 @@
 var BaseUrl = "http://182.92.70.85/hlppapi/";
-var User;
+
 require.config({
     baseUrl: '../js/lib',  //相对于index.html页面文件的地址
     paths:{   //这里配置的地址，都是相对于上方的baseUrl的
@@ -26,32 +26,7 @@ require.config({
 });
 
 
-require(['jquery','net','header','avalon','domReady!'], function(jquery,net,header,avalon) {
-	    
-	    
-	    User = avalon.define({
-	    
-        $id: "User",
-        
-        id : '0',
-        
-        username: '用户名',
-
-    }); 
-
-	    
-	    
-	    $("#header").load("../view/common/header.html",function(){
-		    
-		    $("#login").load("../view/common/login.html",function()
-		    {
-			    
-			    avalon.scan();
-			    
-		    });
-		     
-	    });
-	    
+require(['jquery','net','header'], function() {	    
 
 })
 
@@ -80,12 +55,18 @@ function onlyNumber(event){
 //发送验证码时添加cookie
 function addCookie(name,value,expiresHours){ 
   var cookieString=name+"="+escape(value); 
+  
+  console.log(cookieString);
+  
   //判断是否设置过期时间,0代表关闭浏览器时失效
   if(expiresHours>0){ 
     var date=new Date(); 
     date.setTime(date.getTime()+expiresHours*1000); 
     cookieString=cookieString+";expires=" + date.toUTCString(); 
   } 
+  
+   console.log(cookieString);
+  
     document.cookie=cookieString; 
 } 
 
@@ -101,19 +82,24 @@ function editCookie(name,value,expiresHours){
 } 
 
 //根据名字获取cookie的值
-function getCookieValue(name){ 
+function getCookieValue(name)
+{ 
    var strCookie=document.cookie; 
+   
    var arrCookie=strCookie.split("; "); 
+   
    for(var i=0;i<arrCookie.length;i++){ 
+	   
     var arr=arrCookie[i].split("="); 
-    if(arr[0]==name){
+    
+    if(arr[0]==name)
+    {
      return unescape(arr[1]);
-     break;
-    }else{
-       return ""; 
-       break;
-     } 
+    }
+         
    } 
+   
+   return "";
      
 }
 
