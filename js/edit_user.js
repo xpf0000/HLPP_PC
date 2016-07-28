@@ -16,4 +16,6 @@ requirejs(['../main'], function (main) {
 		avalon.scan(document.getElementById('editUserVC'));
 		
 		console.log('loaded edit_user !!!!!!!!!');
+		
+		
 })})
