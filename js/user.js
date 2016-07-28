@@ -6,9 +6,11 @@ requirejs(['main'], function (main) {
 	     
 	     require(['edituser'], function() {  
 	     	$("#right_main").load("user_edit_info.html",function(){
-	
+ 		
 			});});
 	    			
+	    			
+	     	
 	     	selectedItem = $("#nowSelect");
 	     	
  			var model = avalon.define({		
@@ -35,10 +37,12 @@ requirejs(['main'], function (main) {
 					 avalon.vmodels['editUserVC'].$element = null;
 					  
 					 	require(['edituser'], function() {   
+						 	
+						 	avalon.scan(document.getElementById('editUserVC'));
 		                 
 		              });
 		              
-		              avalon.scan(document.getElementById('editUserVC'));
+		              
 		    	     
 	    			});
 
@@ -51,19 +55,17 @@ requirejs(['main'], function (main) {
 	                 
 	                 changeClass(this.target);
 	                 
-	                 $('#datetimepicker_dark').datetimepicker({theme:'dark'})
-	                 
+
 	                 $("#right_main").html("");
 
 					 $("#right_main").load("activity_list.html",function(){
 			                    
-			           require(['activity_list'], function() {});
-		                 
-		              })
-
-	                 
-	                 
-	                
+			           require(['activity_list'], function() {
+				         
+				           initDatePicker();
+				           
+			          })})
+ 
 	    			
                  })	;
                  		

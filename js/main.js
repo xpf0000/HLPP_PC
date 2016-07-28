@@ -26,6 +26,7 @@ require.config({
     },
     shim:{
         avalon: { exports: "avalon" },
+        header: { exports: "header" },
         mmAnimate:{ deps: ['avalon']},    
     }
 });

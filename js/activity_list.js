@@ -6,10 +6,11 @@ requirejs(['main'], function (main) {
 	     
 })})
 
+initDatePicker();
 
-
-
-$.datetimepicker.setLocale('en');
+function initDatePicker()
+{
+	$.datetimepicker.setLocale('en');
 
 $('#datetimepicker_format').datetimepicker({value:'2015/04/15 05:03', format: $("#datetimepicker_format_value").val()});
 //console.log($('#datetimepicker_format').datetimepicker('getValue'));
@@ -143,3 +144,6 @@ $('#datetimepicker12').datetimepicker({
 });
 
 $('#datetimepicker_dark').datetimepicker({theme:'dark'})
+}
+
+

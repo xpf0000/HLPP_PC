@@ -1,17 +1,51 @@
 <div id="editUserVC" class="u_page_right fl ms-controller" ms-controller="editUserVC">
-<div class="page_tit">{{@aaa}}</div>
+	
+<!-- <form ms-validate="@validate"> -->
+		
+<div class="page_tit">资料设置 <span style="color: red"> {{@message}} </span></div>
+
 <div class="form_group">
-<div class="form_li mt20"><span class="info_text">头像</span><span class="photo01"><img src="../images/face01.jpg" width="200" height="200" /></span><span class="photo02"><img src="../images/face02.jpg" width="100" height="100" /></span><span class="photo03"><img src="../images/face03.jpg" width="50" height="50" /></span><span class="photo04"><p>上传的头像会自动生成头像缩略图，您也可以拖动大图的裁减区域，调整缩图内容。 
+	
+<form id="uploadHead">	
+<div class="form_li mt20"><span class="info_text">头像</span><span class="photo01">
+	<img id= "head1" src="../images/face01.jpg" width="200" height="200" /></span><span class="photo02">
+	<img id= "head2" src="../images/face02.jpg" width="100" height="100" /></span><span class="photo03">
+	<img id= "head3" src="../images/face03.jpg" width="50" height="50" /></span><span class="photo04">
+	<p>上传的头像会自动生成头像缩略图，您也可以拖动大图的裁减区域，调整缩图内容。 
 支持JPG、GIF、PNG等图片格式 推荐尺寸：
-200*200像素。</p><button class="up_load">上传头像</button></span></div>
-<div class="form_li"><span class="info_text">昵称</span><input ms-duplex="@nick" name="mod_no" type="text" placeholder="河洛泡泡" class="info_input big_input"/></div>
-<div class="form_li"><span class="info_text">真实姓名</span><input name="mod_no" type="text" placeholder="张三丰" class="info_input big_input"/></div>
+200*200像素。</p>
+<button ms-click="@upload" class="up_load">上传头像
+<input id="file" type="file" name="file" ms-change="@fileChange($event)" accept="image/*" hidden="true" />
+</button>
+
+</span></div>
+
+</form>
+
+
+
+
+<div class="form_li"><span class="info_text">昵称</span><input ms-duplex="@nickname" name="mod_no" type="text" placeholder="河洛泡泡" class="info_input big_input"/></div>
+<div class="form_li"><span class="info_text">真实姓名</span><input ms-duplex="@truename" name="mod_no" type="text" placeholder="张三丰" class="info_input big_input"/></div>
 <div class="form_li"><span class="info_text">个性签名</span><input name="mod_no" type="text" placeholder="无忌，我教你的还记得多少？" class="info_input big_input"/></div>
 <div class="form_li"><span class="info_text">手机号</span><input name="mod_no" type="text" placeholder="15896522190" class="info_input small_input"/><button class="small_button">立即验证</button></div>
-<div class="form_li"><span class="info_text">地区</span><input name="mod_no" type="text" placeholder="洛阳" class="info_input small_input"/><input name="mod_no" type="text" placeholder="西工" class="info_input small_input"/></div>
-<div class="form_li"><span class="info_text">性别</span><input type="radio" id="radio-2-1" name="radio-2-set" class="regular-radio big-radio"  checked/><label for="radio-2-1"></label>男
-<input type="radio" id="radio-2-2" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-2"></label>女</div>
-<div class="form_li"><span class="info_text">安全验证</span><span class="info_yz"></span></div>
-<div class="form_li"><button class="form_li_submit f16">确定修改</button></div>
+
+<div class="form_li">
+	<span class="info_text">地区</span>
+	<input ms-duplex="@address0" name="mod_no" type="text" placeholder="洛阳" class="info_input small_input"/>
+	<input ms-duplex="@address1" name="mod_no" type="text" placeholder="西工" class="info_input small_input"/>
 </div>
+
+<div class="form_li">
+	<span class="info_text">性别</span>
+<input ms-duplex="@sex" type="radio" id="radio-2-1" value="0" name="radio-2-set" class="regular-radio big-radio"  checked/><label for="radio-2-1"></label>男
+<input ms-duplex="@sex" type="radio" id="radio-2-2" value="1" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-2"></label>女
+</div>
+
+<div class="form_li"><span class="info_text">安全验证</span><span class="info_yz"></span></div>
+<div class="form_li"><button ms-click="@submit" class="form_li_submit f16">确定修改</button></div>
+</div>
+
+<!-- </form> -->
+
 </div>

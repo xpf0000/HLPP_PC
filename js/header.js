@@ -14,7 +14,7 @@ requirejs(['../main'], function (main) {
         id : '0',
         nickname: '',
         username: '',
-        headimage: '',
+        headimage: '../images/face03.png',
         openid: '',
         mobile: '',
         
@@ -145,8 +145,14 @@ requirejs(['../main'], function (main) {
 	
 	}
 	
+
 	
-	function saveUser()
+});
+});
+
+
+
+function saveUser()
 	{
 		if(User.isLogin)
 		{
@@ -189,8 +195,3 @@ requirejs(['../main'], function (main) {
 		console.log(User.nickname);
 		
 	}
-	
-
-	
-});
-});
