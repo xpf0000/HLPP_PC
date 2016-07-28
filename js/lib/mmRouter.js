@@ -96,7 +96,7 @@ define(["./mmHistory"], function () {
             avalon.Array.ensure(array, this._pathToRegExp(path, opts))
         },
         //判定当前URL与已有状态对象的路由规则是否符合
-        route: function (method, path, query) {
+        route: function (method,target, path, query) {
             path = path.trim()
             var states = this.routingTable[method]
             for (var i = 0, el; el = states[i++]; ) {
@@ -110,6 +110,11 @@ define(["./mmHistory"], function () {
                     if (keys.length) {
                         this._parseArgs(args, el)
                     }
+                    
+                    el.target = target;
+                    
+                    //console.log(target);
+                    
                     return  el.callback.apply(el, args)
                 }
             }
@@ -154,7 +159,7 @@ define(["./mmHistory"], function () {
          *  @param options.replace true替换history，否则生成一条新的历史记录
          *  @param options.silent true表示只同步url，不触发url变化监听绑定
          */
-        navigate: function (hash, options) {
+        navigate: function (target,hash, options) {
             var parsed = parseQuery((hash.charAt(0) !== "/" ? "/" : "") + hash),
                     options = options || {}
             if (hash.charAt(0) === "/")
@@ -164,7 +169,10 @@ define(["./mmHistory"], function () {
             // 只是写历史而已
             if (!options.silent && this.lastHash !== hash) {
                 this.lastHash = hash
-                this.route("get", parsed.path, parsed.query, options)
+                this.route("get",target, parsed.path, parsed.query, options)
+                
+                console.log(target);
+                
             }
         },
         /*

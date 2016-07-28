@@ -7,6 +7,7 @@ require.config({
         domReady:'domReady',
         mmHistory: 'mmHistory',
         mmRouter: 'mmRouter',
+        mmPromise: 'mmPromise',
         css: 'css',  //加上css.js
         jquery : 'jquery-1.8.0.min',
         SuperSlide : 'jquery.SuperSlide.2.1.1',
@@ -17,6 +18,8 @@ require.config({
         net: 'XRequest',
         spin: 'spin.min',
         header: '../header',
+        edituser: '../edit_user',
+		activity_list: '../activity_list',
         showDialog: 'showDialog.min',
         datepicker: 'jquery.datetimepicker.full',
         jmousewheel: 'jquery.mousewheel',

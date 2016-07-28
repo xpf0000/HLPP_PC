@@ -106,9 +106,7 @@ requirejs(['../main'], function (main) {
 	
     
 	function doLogin()
-	{
-		alert("点击登录");
-		
+	{		
 		var url = BaseUrl+"Public/Found/?service=User.login&mobile="+LoginModel.account+"&password="+LoginModel.password;
  
 	

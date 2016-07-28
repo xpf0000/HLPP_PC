@@ -218,7 +218,7 @@ define(["avalon"], function (avalon) {
             History.started = false
         },
         // 触发预先绑定的回调
-        fireUrlChange: function (fragment) {
+        fireUrlChange: function (target,fragment) {
 //            if (!this.matchRoot()) {
 //                return false
 //            }
@@ -226,7 +226,7 @@ define(["avalon"], function (avalon) {
 
             if (avalon.router) {
                 avalon.router.setLastPath(fragment)//保存到本地储存或cookie
-                avalon.router.navigate(fragment)
+                avalon.router.navigate(target,fragment)
             }
             if (this.options.fireAnchor) {
                 scrollToAnchorId(fragment.replace(/\?.*/g, ""))
@@ -234,7 +234,7 @@ define(["avalon"], function (avalon) {
         },
         // 用动触发回调并更新地址栏, options里面 replace, trigger
 
-        navigate: function (fragment, options) {
+        navigate: function (target,fragment, options) {
             if (!History.started)
                 return false
             if (!options || options === true) {
@@ -273,7 +273,7 @@ define(["avalon"], function (avalon) {
                 return this.location.assign(url)
             }
             if (options.trigger) {
-                return this.fireUrlChange(fragment)
+                return this.fireUrlChange(target,fragment)
             }
         },
         // 更新hash或地址的某一部分
@@ -299,7 +299,11 @@ define(["avalon"], function (avalon) {
         if (!History.started || defaultPrevented || event.ctrlKey
                 || event.metaKey || event.which === 2)
             return
+            
         var target = event.target
+        
+        console.log(target);
+        
         while (target.nodeName !== "A") {
             target = target.parentNode
             if (!target || target.tagName === "BODY") {
@@ -323,7 +327,7 @@ define(["avalon"], function (avalon) {
             }
             if (hash) {
                 event.preventDefault()
-                avalon.history.navigate(hash, true)
+                avalon.history.navigate(target,hash, true)
             }
         }
     })
