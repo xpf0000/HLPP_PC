@@ -3142,7 +3142,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var $id = getController(elem)
 
 	            var vm = avalon.vmodels[$id]
+	            
+	            //console.log(vm);
+	            
 	            if (vm && !vm.$element) {
+		            
 	                avalon(elem).removeClass('ms-controller')
 	                vm.$element = elem
 	             
@@ -3168,9 +3172,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                onceWarn = false
 	                avalon.batch($id)
 
-	            } else if (!$id) {
+	            } 
+	            else if (!$id) 
+	            {
 	                scan(elem.childNodes)
 	            }
+	            else
+	            {
+		            console.log("无法扫描节点!!!!!!!!!!!");
+		       	}
 	        }
 	    }
 	}

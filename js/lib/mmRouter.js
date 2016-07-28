@@ -113,7 +113,7 @@ define(["./mmHistory"], function () {
                     
                     el.target = target;
                     
-                    //console.log(target);
+                    //
                     
                     return  el.callback.apply(el, args)
                 }
@@ -171,7 +171,7 @@ define(["./mmHistory"], function () {
                 this.lastHash = hash
                 this.route("get",target, parsed.path, parsed.query, options)
                 
-                console.log(target);
+                
                 
             }
         },

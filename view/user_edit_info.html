@@ -1,10 +1,10 @@
-<div id="editUserVC" class="u_page_right fl ms-controller" ms-important="editUserVC">
-<div class="page_tit">资料设置</div>
+<div id="editUserVC" class="u_page_right fl ms-controller" ms-controller="editUserVC">
+<div class="page_tit">{{@aaa}}</div>
 <div class="form_group">
 <div class="form_li mt20"><span class="info_text">头像</span><span class="photo01"><img src="../images/face01.jpg" width="200" height="200" /></span><span class="photo02"><img src="../images/face02.jpg" width="100" height="100" /></span><span class="photo03"><img src="../images/face03.jpg" width="50" height="50" /></span><span class="photo04"><p>上传的头像会自动生成头像缩略图，您也可以拖动大图的裁减区域，调整缩图内容。 
 支持JPG、GIF、PNG等图片格式 推荐尺寸：
 200*200像素。</p><button class="up_load">上传头像</button></span></div>
-<div class="form_li"><span class="info_text">昵称</span><input name="mod_no" type="text" placeholder="河洛泡泡" class="info_input big_input"/></div>
+<div class="form_li"><span class="info_text">昵称</span><input ms-duplex="@nick" name="mod_no" type="text" placeholder="河洛泡泡" class="info_input big_input"/></div>
 <div class="form_li"><span class="info_text">真实姓名</span><input name="mod_no" type="text" placeholder="张三丰" class="info_input big_input"/></div>
 <div class="form_li"><span class="info_text">个性签名</span><input name="mod_no" type="text" placeholder="无忌，我教你的还记得多少？" class="info_input big_input"/></div>
 <div class="form_li"><span class="info_text">手机号</span><input name="mod_no" type="text" placeholder="15896522190" class="info_input small_input"/><button class="small_button">立即验证</button></div>

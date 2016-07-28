@@ -302,7 +302,7 @@ define(["avalon"], function (avalon) {
             
         var target = event.target
         
-        console.log(target);
+        
         
         while (target.nodeName !== "A") {
             target = target.parentNode

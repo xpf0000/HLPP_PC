@@ -4,8 +4,11 @@ var selectedItem;
 requirejs(['main'], function (main) {
      require(['mmRouter','jquery','datepicker','domReady!'], function(avalon) {
 	     
-	     	$("#right_main").load("user_edit_info.html");
-	     	
+	     require(['edituser'], function() {  
+	     	$("#right_main").load("user_edit_info.html",function(){
+	
+			});});
+	    			
 	     	selectedItem = $("#nowSelect");
 	     	
  			var model = avalon.define({		
@@ -26,18 +29,16 @@ requirejs(['main'], function (main) {
 	                 
 	                 $("#right_main").html("");
    
-   
-					 console.log('点击用户资料 !!!!!!!!!');
-					 
-					 console.log(this.target);
-					 
+				 
 					 $("#right_main").load("user_edit_info.html",function(){
 
-					 console.log('loaded user_edit_info !!!!!!!!!');
-					 
-					 require(['edituser'], function() {   
+					 avalon.vmodels['editUserVC'].$element = null;
+					  
+					 	require(['edituser'], function() {   
 		                 
-		              })
+		              });
+		              
+		              avalon.scan(document.getElementById('editUserVC'));
 		    	     
 	    			});
 
@@ -53,11 +54,7 @@ requirejs(['main'], function (main) {
 	                 $('#datetimepicker_dark').datetimepicker({theme:'dark'})
 	                 
 	                 $("#right_main").html("");
-	                 
-	                 console.log('点击我的活动 !!!!!!!!!');
-	                 
-	                 console.log(this.target);
-	                 
+
 					 $("#right_main").load("activity_list.html",function(){
 			                    
 			           require(['activity_list'], function() {});
