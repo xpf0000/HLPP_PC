@@ -22,6 +22,10 @@ requirejs(['main'], function (main) {
                                          	
                  });
                  
+                 
+                 
+                 avalon.scan(document.getElementById('userVC'));
+                 
                  avalon.router.get("/logout", function()
                  {
 	                 
@@ -84,6 +88,8 @@ requirejs(['main'], function (main) {
                  avalon.history.start({		
                      basepath: "/"		
                  });
+                 
+     
                  
 
 	     
