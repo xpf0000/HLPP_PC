@@ -19,6 +19,7 @@ require.config({
         spin: 'spin.min',
         header: '../header',
         edituser: '../edit_user',
+        paihang: '../paihang',
 		activity_list: '../activity_list',
         showDialog: 'showDialog.min',
         datepicker: 'jquery.datetimepicker.full',

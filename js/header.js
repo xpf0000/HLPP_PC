@@ -89,9 +89,9 @@ requirejs(['../main'], function (main) {
     
     if($("#header").html() == "")
 	    {
-		    $("#header").load("../view/common/header.html",function(){
+		    $("#header").load("./common/header.html",function(){
 		    
-		    $("#login").load("../view/common/login.html",function()
+		    $("#login").load("./common/login.html",function()
 		    {
 				avalon.scan(document.getElementById('loginBar'));
 				avalon.scan(document.getElementById('User'));

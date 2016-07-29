@@ -56,8 +56,6 @@ requirejs(['../main'], function (main) {
 
 	});
 	
-	//console.log($("#file").files.length);
-
 		if($("#file")[0].files.length > 0)
 		{
 			url = BaseUrl+"Public/Found/?service=User.headEdit";

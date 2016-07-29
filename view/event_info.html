@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>活动-河洛泡泡</title>
+<link rel="stylesheet" type="text/css" href="../css/base.css">
+<link rel="stylesheet" type="text/css" href="../css/v_menu.css">
+<link rel="stylesheet" type="text/css" href="../css/page.css">
+
+<script data-main="../js/event_info" src="../js/lib/require.js" ></script>
+
+</head>
+
+<body ms-controller="eventInfoVC" class="ms-controller">
+	
+<!-- 加载头部 -->
+<div id="header"></div>	
+
+
+<div class="enent_title wrap rel"><h1>{{@title}}</h1><a href="">[复制链接]</a><span class="qr_code fr" onmouseover="code_show('qr_code_show', 'show');" onmouseout="code_show('qr_code_show', 'hide');"></span><span class="qr_code_show abs" id="qr_code_show"><img src="../images/temp/qr_code_show.jpg" width="240" height="255" /></span></div>
+<div class="event_info wrap"><img src="../images/temp/photo01.jpg" width="625" height="420" />
+<div class="infos fr">
+<div class="e_price">费 用：<em>￥</em><i>{{@price}}</i></div>
+<div class="e_date">时 间：<span>{{@s_time_str}} ～ {{@e_time_str}} </span> </div>
+<div class="e_user">发布人：<a href=""><img src="../images/face03.jpg" width="50" height="50" /><span class="user_name">{{@nickname}}</span></a></div>
+<div class="e_label">标 签：<ul><li><a href="">徒步</a></li><li><a href="">骑行</a></li><li><a href="">赏花</a></li></ul><div class="clear"></div></div>
+<div class="e_no">限 额：<span>{{@a_number}}人</span></div>
+<div class="e_btn"><button class="btn sign_up" onClick="showDialog.show({id:'loginBar',bgcolor:'#000',opacity:60});">我要报名</button><button class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">1688</span></button><div class="clear"></div></div>
+<div class="e_share">分享到：<span class="e_share_icon"><img src="../images/share.jpg" width="138" height="25" /></span></div>
+<div class="e_icon"><span class="view_times"></span>{{@view}}<span class="user_no"></span>{{@comment}}<span class="comment_icon"></span>{{@comment}}<span class="like_icon"></span>{{@comment}}</div>
+</div></div>
+
+<div class="wrap">
+<div class="index_left mr30">
+<div class="page_tit mt15">活动相册<span class="fr f18"><a href="">全屏浏览</a></span></div>
+<div class="e_photo mt20"><img src="../images/temp/photo02.jpg" width="858" height="525" /></div>
+<div class="page_tit mt15">活动详情</div>
+<div class="page_content" ms-html="@content"></div>
+
+  <div class="b_icon_btn rel"><button class="wx_share"><span class="wx_icon"></span>分享到微信</button><button class="favorite"><span class="favorite_icon"></span><span>收藏</span><span class="user_num">1688</span></button><button class="warning" onClick="showDialog.show({id:'report_box',bgcolor:'#000',opacity:60});"><span class="warning_icon"></span>举报此活动</button></div>
+  <div class="page_tit mt15">已报名</div>
+  <div class="user_face">
+  <ul>
+	  
+  <li :for="el in @joinUser"><a href=""><img ms-attr="{src: el.headimage}" width="100" height="100" /></a><span>{{el.nickname}}<span>
+  </li>
+  
+  </ul>
+  
+  <div class="clear"></div></div>
+    <div class="page_tit mt15">发表评论</div>
+    <div class="comment_box mt15"><textarea name="e_comment" cols="" rows="">对本次活动有什么想法或对主办方有什么意见，那就冒个泡吧！</textarea></div>
+    <div class="comment_btn"><button>发表评论</button></div>
+      <div class="page_tit mt15">评论列表</div>  
+      <div class="comment_list">
+      
+      <ul>
+	      
+      <li :for="c in @commentList">
+      <a href="" class="fl">
+	  <img ms-attr="{src: c.headimage}" width="100" height="100" />
+	  </a>
+
+      <div class="comment_body"><h4><a href="">{{c.nickname}}</a><span class="e_time">18小时前</span></h4>
+      <p>{{c.content}}</p>
+      <span class="e_comment_list_icon"><span class="e_zambia_icon"></span>{{c.view}}<span class="e_comment_icon"></span>{{c.comment}}</span>
+      </div>
+      <div class="clear"></div>
+      
+      
+      
+      </li>
+      
+
+      </ul>
+      </div>
+</div>
+
+
+
+<!-- 加载右侧排行 -->
+<div id="paihang"></div>	
+
+
+<div class="loginBar" style="display:none; height:420px;" id="report_box">
+<h2 class="login_tit"><a href="#" class="db fr" onClick="javascript:showDialog.hide();" ></a>举报活动</h2>
+<div class="report_box tc">
+<textarea name="e_comment" cols="" rows="">举报他们，给个理由吧！</textarea>
+<button class="f16">提交信息</button>
+</div>
+</div>
+
+<div id="tbox">
+	<a id="gotop" href="javascript:void(0)"></a>
+	<a id="float_btn" href="add_activity.html"></a>
+</div>
+</body>
+</html>

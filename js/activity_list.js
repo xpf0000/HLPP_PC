@@ -1,6 +1,11 @@
 requirejs(['main'], function (main) {
      require(['avalon','domReady!'], function(avalon) {
 	     
+	  	 
+	     
+	     
+	     
+	     
 	     
 	     console.log('loaded activity_list !!!!!!!!!');
 	     

@@ -46,20 +46,9 @@
 <div ms-controller="pageClick" ms-click="@nextPageClick()" class="get_more ms-controller">{{@msg}}<img ms-attr="{hidden: @end}" src="../images/arrow.png" width="15" height="15" /></div>
 </div>
 
+<!-- 加载右侧排行 -->
+<div id="paihang"></div>
 
-<div class="index_right"><img src="../images/temp/52.jpg" width="280" height="206" />
-<div class="index_left_tit">活动排行</div>
-
-
-<!-- 活动排行 -->
-<ul ms-controller="paihang" class="ms-controller">
-	
-<li ms-for="el in @info"  class="index_right_list"><a href="event_info.html" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
-
-</ul>
-
-
-</div>
 <div class="clear"></div>
 </div>
 <div id="tbox">

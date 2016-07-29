@@ -1,0 +1,9 @@
+<div id="rightPHView" class="index_right ms-controller" ms-controller="rightPHView">
+<img ms-attr="{src: @rbanner.picurl}" width="280" height="206" />
+	
+<div class="index_left_tit">活动排行</div>
+<!-- 活动排行 -->
+<ul >	
+<li ms-for="el in @paihang"  class="index_right_list"><a href="event_info.html" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
+</ul>
+</div>

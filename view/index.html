@@ -50,8 +50,8 @@
 <ul>
 	
 <li ms-for="el in @tj" class="index_left_list">
-<a href="event_info.html"><img ms-attr="{src: el.url}" width="300" height="200" /></a>
-<h3><a href="event_info.html" title="爱洛阳车友会5月21日受邀参加第二届中原泡泡跑活动，约你来一次与泡泡的狂欢派对！">{{el.title}}</a></h3>
+<a ms-attr="{href: 'event_info.html?id='+el.id}"><img ms-attr="{src: el.url}" width="300" height="200" /></a>
+<h3><a ms-attr="{href: 'event_info.html?id='+el.id}" title="爱洛阳车友会5月21日受邀参加第二届中原泡泡跑活动，约你来一次与泡泡的狂欢派对！">{{el.title}}</a></h3>
 <div><span class="time_icon"></span>{{el.s_time_str}}<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1天</em></div>
 <div class="a_price_r"><span class="a_price_f fl">活动费用</span><span class="a_price fl">￥{{el.price}}</span><div class="clear"></div></div>
 <div class="user_o"><a href=""><img ms-attr="{src: el.headimage}" width="50" height="50" /><span class="user_name">{{el.nickname}}</span></a><span class="user_other fr"><span class="view_times"></span>{{el.view}}<span class="user_no"></span>{{el.collect}}</span></div>
@@ -65,26 +65,15 @@
 </div>
 
 
-
-<div class="index_right">
-	
-	<img ms-attr="{src: @rbanner.picurl}" width="280" height="206" />
-	
-<div class="index_left_tit">活动排行</div>
-
-
-<!-- 活动排行 -->
-<ul >
-	
-<li ms-for="el in @paihang"  class="index_right_list"><a href="event_info.html" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
-
-</ul>
+<!-- 加载右侧排行 -->
+<div id="paihang"></div>
 
 
 
-</div>
 <div class="clear"></div>
 </div>
+
+
 <div id="tbox">
 	<a id="gotop" href="javascript:void(0)"></a>
 	<a id="float_btn" href="add_activity.html"></a>

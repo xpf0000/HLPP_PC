@@ -5,7 +5,7 @@ var indexModel;
 requirejs(['main'], function (main) {
     
     
-     require(['avalon','jquery','domReady!'], function(avalon) {
+     require(['avalon','jquery','paihang','domReady!'], function(avalon) {
 	    
   
 	      	    indexModel = avalon.define({
@@ -15,17 +15,6 @@ requirejs(['main'], function (main) {
 		  		banner : [],
 		  		
 		  		tj: [],
-		  		
-		  		paihang: [],
-		  		
-		  		rbanner: {
-			  		
-			  		id : '',
-			  		picurl : '',
-			  		url : '',
-			  		title : ''
-			  		
-		  		},
 		  		
 		  		nextPageClick: function() {
 
@@ -48,11 +37,8 @@ requirejs(['main'], function (main) {
 				console.log('444444');
     
     getBanner();
-    getRBanner();
     getTj();
-    getPaihang();
-    
-    
+ 
   });      
 });
 
@@ -66,27 +52,6 @@ function getBanner()
 	XHttpGet(url,function(data) 
 	{
 		indexModel.banner = data.data.info;
-	});
-	
-}
-
-function getRBanner()
-{
-	
-	var url = BaseUrl+"Public/Found/?service=common.getguanggao&typeid=8";
-   
-
-	XHttpGet( url, function(data) 
-	{
-		if(data.data.info.length > 0)
-		{
-			indexModel.rbanner.id = data.data.info[0].id;
-			indexModel.rbanner.picurl = data.data.info[0].picurl;
-			indexModel.rbanner.url = data.data.info[0].url;
-			indexModel.rbanner.title = data.data.info[0].title;
-		}
-		
-
 	});
 	
 }
@@ -128,32 +93,6 @@ function getTj()
 	});
 }
 
-
-
-function getPaihang()
-{
-	var url = BaseUrl+"Public/Found/?service=Plans.getListRM";
-   
-	
-	
-	XHttpGet( url, function(data) 
-	{
-		var info = data.data.info;
-		
-		if(info)
-		{
-			$(info).each(function(index,item)
-			{
-				item.s_time_str = $.myTime.UnixToDateFormat(item.s_time, "MM月dd日 mm:ss");
-			});
-			
-			indexModel.paihang = info;
-		}
-		
-		
-
-	});
-}
 
 
 

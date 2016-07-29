@@ -8,7 +8,7 @@ var page = 1;
 requirejs(['main'], function (main) {
     
     
-    require(['avalon','domReady!'], function(avalon) {
+    require(['avalon','paihang','domReady!'], function(avalon) {
 	    
 	        
     pahangModel = avalon.define({
@@ -95,31 +95,6 @@ function getTj()
 }
 
 
-
-function getPaihang()
-{
-	var url = BaseUrl+"Public/Found/?service=plans.getlisttj&page=1&perNumber=10";
-   
-	
-	
-	XHttpGet( url, function(data) 
-	{
-		var info = data.data.info;
-		
-		if(info)
-		{
-			$(info).each(function(index,item)
-			{
-				item.s_time_str = $.myTime.UnixToDateFormat(item.s_time, "MM月dd日 mm:ss");
-			});
-			
-			pahangModel.info = info;
-		}
-		
-		
-
-	});
-}
 
 
 

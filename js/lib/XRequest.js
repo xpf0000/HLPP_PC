@@ -13,10 +13,14 @@ function XHttpGet(url,callBack)
 					timeout:15000, //超时时间
 					success:function(data)
 					{
+						console.log(url);
+						console.log(data);
 	          	  		callBack(data);	                
             		}, 
 					error: function (err) 
 					{
+						console.log(url);
+						console.log(err);
 						callBack(err);
             		}
         		});
