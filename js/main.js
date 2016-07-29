@@ -21,14 +21,20 @@ require.config({
         edituser: '../edit_user',
         paihang: '../paihang',
 		activity_list: '../activity_list',
+		join: '../join',
         showDialog: 'showDialog.min',
         datepicker: 'jquery.datetimepicker.full',
         jmousewheel: 'jquery.mousewheel',
+        
     },
     shim:{
         avalon: { exports: "avalon" },
         header: { exports: "header" },
-        mmAnimate:{ deps: ['avalon']},    
+        mmAnimate:{ deps: ['avalon']},  
+        net:{ deps: ['jquery']}, 
+        gotop:{ deps: ['jquery']},
+        paihang:{ deps: ['net','avalon']}, 
+        join:{ deps: ['net','avalon']},   
     }
 });
 
@@ -109,7 +115,6 @@ function getCookieValue(name)
    return "";
      
 }
-
 
 
 

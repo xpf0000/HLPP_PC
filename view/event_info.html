@@ -12,20 +12,27 @@
 </head>
 
 <body ms-controller="eventInfoVC" class="ms-controller">
+
+<div id="tbox">
+	<a id="gotop" href="javascript:void(0)"></a>
+	<a id="float_btn" href="add_activity.html"></a>
+</div>
 	
 <!-- 加载头部 -->
 <div id="header"></div>	
 
+<!-- 加载报名弹出框 -->
+<div id="join"></div>	
 
 <div class="enent_title wrap rel"><h1>{{@title}}</h1><a href="">[复制链接]</a><span class="qr_code fr" onmouseover="code_show('qr_code_show', 'show');" onmouseout="code_show('qr_code_show', 'hide');"></span><span class="qr_code_show abs" id="qr_code_show"><img src="../images/temp/qr_code_show.jpg" width="240" height="255" /></span></div>
-<div class="event_info wrap"><img src="../images/temp/photo01.jpg" width="625" height="420" />
+<div class="event_info wrap"><img ms-attr="{src: @url}" width="625" height="420" />
 <div class="infos fr">
 <div class="e_price">费 用：<em>￥</em><i>{{@price}}</i></div>
 <div class="e_date">时 间：<span>{{@s_time_str}} ～ {{@e_time_str}} </span> </div>
-<div class="e_user">发布人：<a href=""><img src="../images/face03.jpg" width="50" height="50" /><span class="user_name">{{@nickname}}</span></a></div>
+<div class="e_user">发布人：<a href=""><img ms-attr="{src: @headimage}" width="50" height="50" /><span class="user_name">{{@nickname}}</span></a></div>
 <div class="e_label">标 签：<ul><li><a href="">徒步</a></li><li><a href="">骑行</a></li><li><a href="">赏花</a></li></ul><div class="clear"></div></div>
 <div class="e_no">限 额：<span>{{@a_number}}人</span></div>
-<div class="e_btn"><button class="btn sign_up" onClick="showDialog.show({id:'loginBar',bgcolor:'#000',opacity:60});">我要报名</button><button class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">1688</span></button><div class="clear"></div></div>
+<div class="e_btn"><button class="btn sign_up" onClick="showDialog.show({id:'joinBar',bgcolor:'#000',opacity:60});">我要报名</button><button class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">1688</span></button><div class="clear"></div></div>
 <div class="e_share">分享到：<span class="e_share_icon"><img src="../images/share.jpg" width="138" height="25" /></span></div>
 <div class="e_icon"><span class="view_times"></span>{{@view}}<span class="user_no"></span>{{@comment}}<span class="comment_icon"></span>{{@comment}}<span class="like_icon"></span>{{@comment}}</div>
 </div></div>
@@ -49,8 +56,8 @@
   
   <div class="clear"></div></div>
     <div class="page_tit mt15">发表评论</div>
-    <div class="comment_box mt15"><textarea name="e_comment" cols="" rows="">对本次活动有什么想法或对主办方有什么意见，那就冒个泡吧！</textarea></div>
-    <div class="comment_btn"><button>发表评论</button></div>
+    <div class="comment_box mt15"><textarea ms-duplex="@editComment" name="e_comment" cols="" placeholder="对本次活动有什么想法或对主办方有什么意见，那就冒个泡吧！" rows=""></textarea></div>
+    <div class="comment_btn"><button ms-click="@postComment">发表评论</button></div>
       <div class="page_tit mt15">评论列表</div>  
       <div class="comment_list">
       
@@ -61,9 +68,9 @@
 	  <img ms-attr="{src: c.headimage}" width="100" height="100" />
 	  </a>
 
-      <div class="comment_body"><h4><a href="">{{c.nickname}}</a><span class="e_time">18小时前</span></h4>
+      <div class="comment_body"><h4><a href="">{{c.nickname}}</a><span class="e_time">{{c.time}}</span></h4>
       <p>{{c.content}}</p>
-      <span class="e_comment_list_icon"><span class="e_zambia_icon"></span>{{c.view}}<span class="e_comment_icon"></span>{{c.comment}}</span>
+<!--       <span class="e_comment_list_icon"><span class="e_zambia_icon"></span>{{c.view}}<span class="e_comment_icon"></span>{{c.comment}}</span> -->
       </div>
       <div class="clear"></div>
       
@@ -90,9 +97,8 @@
 </div>
 </div>
 
-<div id="tbox">
-	<a id="gotop" href="javascript:void(0)"></a>
-	<a id="float_btn" href="add_activity.html"></a>
-</div>
+
+
+
 </body>
 </html>

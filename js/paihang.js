@@ -1,5 +1,5 @@
 requirejs(['../main'], function (main) {
-	require(['avalon','net','domReady!'], function(avalon) {
+	//require(['avalon','net','domReady!'], function(avalon) {
 		
 		var vm  = avalon.define({		
 	 			
@@ -67,4 +67,5 @@ requirejs(['../main'], function (main) {
 			}
 	
 		
-})})
+//})
+})

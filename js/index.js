@@ -5,7 +5,7 @@ var indexModel;
 requirejs(['main'], function (main) {
     
     
-     require(['avalon','jquery','paihang','domReady!'], function(avalon) {
+     require(['avalon','jquery','paihang','gotop','domReady!'], function(avalon) {
 	    
   
 	      	    indexModel = avalon.define({

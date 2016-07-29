@@ -4,6 +4,6 @@
 <div class="index_left_tit">活动排行</div>
 <!-- 活动排行 -->
 <ul >	
-<li ms-for="el in @paihang"  class="index_right_list"><a href="event_info.html" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
+<li ms-for="el in @paihang"  class="index_right_list"><a ms-attr="{href: 'event_info.html?id='+el.id}" title="爱在洛阳—“千人相亲会”5月21日等你来！">{{el.title}}</a><span class="a_time">{{el.s_time_str}}</span></li>
 </ul>
 </div>

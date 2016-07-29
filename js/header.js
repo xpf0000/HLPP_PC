@@ -11,7 +11,7 @@ requirejs(['../main'], function (main) {
 	    
         $id: "User",
         
-        id : '0',
+        id : '',
         nickname: '',
         username: '',
         headimage: '../images/face03.png',
@@ -19,6 +19,20 @@ requirejs(['../main'], function (main) {
         mobile: '',
         
         isLogin: false,
+        
+        loginClick: function()
+        {
+	        if(User.id != "" && User.isLogin)
+	        {
+		        return true;
+	        }
+	        else
+	        {
+		        showDialog.show({id:'loginBar',bgcolor:'#000',opacity:60});
+		        return false;
+	        }
+	        
+        }
 
     }); 
 
@@ -138,7 +152,7 @@ requirejs(['../main'], function (main) {
 			return;
 		}
 		
-		LoginModel.message = data.data.msg ? data.data.msg : '登录失败,请重试';
+		LoginModel.msg = data.data.msg ? data.data.msg : '登录失败,请重试';
 
 	});
 		

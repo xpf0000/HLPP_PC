@@ -1,7 +1,7 @@
 var id;
 
 requirejs(['main'], function (main) {
-     require(['jquery','showDialog','avalon','gotop','paihang','domReady!'], function(jquery,dialog,avalon) {
+     require(['avalon','showDialog','paihang','join','gotop','domReady!'], function(avalon,dialog) {
 
 	 		id = $.getUrlParam('id');
 	 		
@@ -14,6 +14,7 @@ requirejs(['main'], function (main) {
 					comment: "",
 					update_time: "",
 					content: "",
+					headimage: '',
 				  	nickname: "",
 				  	price: "",
 				  	s_time: "",
@@ -25,9 +26,44 @@ requirejs(['main'], function (main) {
 				  	a_number: "",
 				  	url: "",
 				  	
+				  	editComment: '',
+				  	
 				  	joinUser: [],
 				  	
 				  	commentList: [],
+				  	
+				  	postComment: function()
+				  	{
+					  	if(!User.loginClick())
+					  	{
+						  	return;
+					  	}
+					  	
+					  	if($.trim(vm.editComment).length>0)
+					  	{
+						  	
+						  	var url = BaseUrl+"Public/Found/?service=Plans.addComment&id="+id+"&content="+vm.editComment+"&uid="+User.id+"&username="+User.username;
+
+						  	XHttpGet( url, function(data) 
+						  	{		
+						  		var code = data.data.code;
+		
+						  		if(code == '0')
+						  		{	
+							  		getComment();
+							  		return;
+								}
+		
+								var msg = data.data.msg ? data.data.msg : '登录失败,请重试';
+								
+								alert(msg);
+								
+							});
+	
+					  	}
+					  	
+				  	},
+				  	
                                       
             });
             
@@ -55,6 +91,7 @@ requirejs(['main'], function (main) {
 						vm.e_time = data.data.info[0].e_time;
 						vm.a_number = data.data.info[0].a_number;
 						vm.url = data.data.info[0].url;
+						vm.headimage = data.data.info[0].headimage;
 						
 						vm.s_time_str = $.myTime.UnixToDateFormat(vm.s_time, "yyyy-MM-dd mm:ss");
 						vm.e_time_str = $.myTime.UnixToDateFormat(vm.e_time, "yyyy-MM-dd mm:ss");
@@ -84,11 +121,15 @@ requirejs(['main'], function (main) {
 				{
 					if(data.data.info.length > 0)
 					{
+						
+						$(data.data.info).each(function(index,item)
+						{
+							item.time = $.myTime.DateDiff(item.create_time);							
+						});
+						
 						vm.commentList = data.data.info;
 					}
-					
-					console.log(vm.commentList);
-					
+
 				});
 			}
 

@@ -1,3 +1,4 @@
+
 function b(){
 	h = $(window).height();
 	t = $(document).scrollTop();
@@ -7,12 +8,17 @@ function b(){
 		$('#gotop').hide();
 	}
 }
-$(document).ready(function(e) {
-	b();
+
+b();
 	$('#gotop').click(function(){
 		$(document).scrollTop(0);	
 	})
+
+/*
+$(document).ready(function(e) {
+	
 });
+*/
 
 $(window).scroll(function(e){
 	b();		

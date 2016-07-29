@@ -1,0 +1,31 @@
+<div class="loginBar ms-controller" style="display:none; height:550px;" id="joinBar" ms-controller="joinView">
+	
+<h2 class="login_tit"><a href="#" class="db fr" onClick="javascript:showDialog.hide();" ></a>我要报名</h2>
+<div class="login_main">
+	
+	<form ms-validate="@joinvalidate">
+	
+<ul>
+	
+<li><input ms-rules='{required:true,minlength:2,maxlength:18}' ms-duplex="@name" data-required-message="请输入姓名" data-message="姓名长度为2-18位" id="name" name="name" type="text" maxlength="18" placeholder="请输入姓名" class="login_text"/></li>
+
+<li style="height:40px; line-height:40px;"><input ms-duplex="@sex" type="radio" value="0" id="radio-2-1" name="radio-2-set" class="regular-radio big-radio"  checked/><label for="radio-2-1"></label>男
+<input ms-duplex="@sex" type="radio" value="1" id="radio-2-2" name="radio-2-set" class="regular-radio big-radio" /><label for="radio-2-2"></label>女</li>
+
+<li><input id="mob" ms-rules='{required:true,pattern:/0?(13|15|18|17)[0-9]{9}/}' ms-duplex="@mob" data-required-message="请输入你的手机号" data-message="请输入正确的手机号" maxlength="11" style="ime-mode:disabled;" name="mob" type="tel" placeholder="请输入手机号" class="login_text"/></li>
+
+<li><input id="code" ms-rules='{required:true,pattern:/0?[0-9]{18}/}' ms-duplex="@code" data-required-message="请输入你的身份证号" data-message="请输入正确的身份证号" maxlength="18" name="code" type="text" placeholder="请输入身份证号" class="login_text"/></li>
+
+<li style="height:40px; line-height:40px;">
+
+<span style="color: red">{{@msg}}</span>
+<!-- <span class="fr"><a href="">帮人报名</a></span> -->
+</li>
+
+<li><button>确定报名</button></li>
+</ul>
+
+	</form>
+	
+</div>
+</div>
