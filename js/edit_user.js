@@ -1,5 +1,5 @@
 
-requirejs(['../main'], function (main) {
+requirejs(['main'], function (main) {
 
 	require(['avalon','net','domReady!'], function(avalon) {
 		
@@ -11,7 +11,7 @@ requirejs(['../main'], function (main) {
                    
 				   nickname: '',
 				   username: '',
-				   headimage: '',
+				   headimage: '../images/face01.jpg',
 				   openid: '',
 				   mobile: '',
                    address: '',
@@ -96,15 +96,6 @@ requirejs(['../main'], function (main) {
         		fileChange: function(event)
         		{
 	        		
-	        		console.log(event.target);
-	        		
-	        		console.log(document.getElementById('file'));
-	        		
-	        		
-	        		
-	        		console.log($("#file")[0]);
-	        		
-	        		
 	        		var files = event.target.files, file; 
 					if (files && files.length > 0) { 
 
@@ -130,48 +121,32 @@ requirejs(['../main'], function (main) {
 
 
 				},
-        			
-        			
-        		
-        			
-                   
-                   
+        			        
         });
+        
+        $("#right_main").load("user_edit_info.html",function(){
+ 		
+ 			avalon.scan(document.getElementById('editUserVC'));
+ 			
+ 			
+ 			console.log(User);
+ 			
+ 			userVCModel.id = User.id;
+ 			userVCModel.nickname = User.nickname;
+ 			userVCModel.headimage = User.headimage;
+ 			
+ 			
+ 			editUserModel.id = User.id;
+ 			editUserModel.nickname = User.nickname;
+ 			editUserModel.headimage = User.headimage;
+ 			editUserModel.truename = User.truename;
+ 			editUserModel.headimage = User.headimage;
+ 			editUserModel.headimage = User.headimage;
+ 			
+ 		
+		});
 
-
-		avalon.scan(document.getElementById('editUserVC'));
-		
-		
-		
-/*
-$('#file').change(function(event) { 
-
-console.log(event); 
-
-var files = event.target.files, file; 
-if (files && files.length > 0) { 
-
-file = files[0]; 
-
-
-if(file.size > 1024 * 1024 * 2) { 
-alert('图片大小不能超过 2MB!'); 
-return false; 
-} 
-
-var URL = window.URL || window.webkitURL; 
-
-var imgURL = URL.createObjectURL(file); 
-
-$("#head1").attr("src", imgURL);
-$("#head2").attr("src", imgURL);
-$("#head3").attr("src", imgURL);
-
-
-} 
-}); 
 	
-*/	
 
 		
 })})

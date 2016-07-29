@@ -5,7 +5,6 @@ var spinner;
 
 requirejs(['main'], function (main) {
     
-    
     require(['jquery','avalon','domReady!'], function(jquery,avalon) {
 	    
     $("#mob").keydown(onlyNumber);

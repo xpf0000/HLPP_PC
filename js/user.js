@@ -1,27 +1,36 @@
 
 var selectedItem;
+var userVCModel
 
 requirejs(['main'], function (main) {
      require(['mmRouter','jquery','datepicker','domReady!'], function(avalon) {
 	     
 	     require(['edituser'], function() {  
-	     	$("#right_main").load("user_edit_info.html",function(){
- 		
-			});});
+	     });
 	    			
 	    			
 	     	
 	     	selectedItem = $("#nowSelect");
 	     	
- 			var model = avalon.define({		
+ 			userVCModel = avalon.define({		
 	 			
-                    $id: "userVC",		
-                    currPath: "",		
-                    params: {},		
-                    query: {},		
-                     args: "[]"	,
+                    $id: "userVC",	
+                    id : '0',	
+                    nickname: '',
+                    username: '',
+				    headimage: '../images/face02.jpg',
                                          	
-                 });		
+                 });
+                 
+                 avalon.router.get("/logout", function()
+                 {
+	                 
+	                 deleteUser();
+	                 
+	                 location.href = "index.html";
+	                                     	    				
+                 })	
+	
                  		
 	
                  avalon.router.get("/user_edit_info.html", function()
@@ -39,6 +48,8 @@ requirejs(['main'], function (main) {
 					 	require(['edituser'], function() {   
 						 	
 						 	avalon.scan(document.getElementById('editUserVC'));
+						 	
+						 	console.log(User);
 		                 
 		              });
 		              

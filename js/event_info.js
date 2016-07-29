@@ -64,8 +64,21 @@ requirejs(['main'], function (main) {
 					  	
 				  	},
 				  	
+				  	joinClick: function()
+				  	{
+					  	if(!User.loginClick())
+					  	{
+						  	return;
+					  	}
+					  	
+					  	showDialog.show({id:'joinBar',bgcolor:'#000',opacity:60});
+	        
+        			}
+				  	
                                       
             });
+            
+            avalon.scan(document.getElementById('eventInfoVC'));
             
             getInfo();
             getJoinUser();

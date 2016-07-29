@@ -11,13 +11,13 @@
 	
 </form>
 
-<span class="login" :if = "!@isLogin">
+<span class="login" ms-if = "!@isLogin">
 <a href="reg.html">注册</a>
 <a href="#" ms-click="@loginClick">登录</a>
 </span>
 
 
-<span class="login_ing" :if = "@isLogin">
+<span class="login_ing" ms-if = "@isLogin">
 <a href="user_info.html"><img ms-attr="{src: @headimage}" width="30" height="30" />
 <span class="user_name">{{@nickname}}<b class="caret"></b></span>
 </a>

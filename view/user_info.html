@@ -19,7 +19,7 @@
 <div class="wrap mt30 ms-controller" ms-controller="userVC" id="userVC">
 	
 	
-<div class="u_page_left fl"><div class="u_info tc"><a href=""><img src="../images/face02.jpg" width="100" height="100" /></a><span class="u_name">一路向东</span></div>
+<div class="u_page_left fl"><div class="u_info tc"><a href=""><img ms-attr="{src: @headimage}" width="100" height="100" /></a><span class="u_name">{{@nickname}}</span></div>
 
 
 <div class="u_menu_b">
@@ -30,10 +30,11 @@
 
 <div class="u_menu_b">
 <div class="u_menu_bc"><span class="u_menu_icon_02 db fl"></span><span class="u_menu_bc_name db fl">设置</span><span class="u_menu_arrow db fr"></span></div>
-<div class="u_menu_sc"><ul><li><a  class="u_menu_sc_c" id="nowSelect" href="#!/user_edit_info.html">资料设置</a></li><li><a ms-click="@aClick" href="edit_password.html">修改密码</a></li><li><a href="">退出登录</a></li></ul></div>
+<div class="u_menu_sc"><ul><li><a  class="u_menu_sc_c" id="nowSelect" href="#!/user_edit_info.html">资料设置</a></li><li><a ms-click="@aClick" href="edit_password.html">修改密码</a></li><li><a href="#!/logout">退出登录</a></li></ul></div>
 </div>
 </div>
 
+<!-- 右侧主体内容 -->
 <div id="right_main">
 	
 </div>

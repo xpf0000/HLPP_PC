@@ -2,7 +2,7 @@
 var LoginModel;
 var User;
 
-requirejs(['../main'], function (main) {
+requirejs(['main'], function (main) {
 
 	require(['jquery','avalon','showDialog','domReady!'], function(jquery,avalon,dialog) {
 	
@@ -14,7 +14,8 @@ requirejs(['../main'], function (main) {
         id : '',
         nickname: '',
         username: '',
-        headimage: '../images/face03.png',
+        truename: '',
+        headimage: '../images/face01.png',
         openid: '',
         mobile: '',
         
@@ -66,8 +67,6 @@ requirejs(['../main'], function (main) {
                 reasons.forEach(function (reason) {
 	                	                
 	               LoginModel.msg = reason.getMessage();
-  
-                    console.log(reason.getMessage())
                     
                    return;
                 })
@@ -75,8 +74,6 @@ requirejs(['../main'], function (main) {
             },
             
             onValidateAll: function (reasons) {
-	            
-	            console.log('%%%%%%%%%%%');
 	            	            
                 if (reasons.length) {
                     console.log('有表单没有通过')
@@ -100,11 +97,9 @@ requirejs(['../main'], function (main) {
 
     }); 
     
-    
-    if($("#header").html() == "")
-	    {
-		    $("#header").load("./common/header.html",function(){
-		    
+
+    $("#header").load("./common/header.html",function(){
+     
 		    $("#login").load("./common/login.html",function()
 		    {
 				avalon.scan(document.getElementById('loginBar'));
@@ -113,7 +108,17 @@ requirejs(['../main'], function (main) {
 		    });
 		     
 	    });
+
+    
+/*
+    if($("#header").html() == "")
+	    {
+		    	}
+	else
+	{
+		console.log('header has html !!!!!!!!!!');
 	}
+*/
 	
 	getUserFromCookie();
 	
@@ -128,8 +133,6 @@ requirejs(['../main'], function (main) {
 	XHttpGet( url, function(data) 
 	{
 		
-		console.log(data);
-		
 		var code = data.data.code;
 		
 		if(code == '0')
@@ -143,11 +146,14 @@ requirejs(['../main'], function (main) {
 			User.openid = data.data.info[0].openid;
 			User.mobile = data.data.info[0].mobile;
 			
-			console.log(User.nickname);
-			
 			saveUser();
 			
 			showDialog.hide();
+			
+			
+			if(window.location.href.indexOf("reg.html") > 0 ){
+				location.href = "index.html";
+			}
 			
 			return;
 		}
@@ -176,10 +182,7 @@ function saveUser()
 			addCookie("headimage",User.headimage,60*60*24*7);//添加cookie记录,有效时间60s
 			addCookie("openid",User.openid,60*60*24*7);//添加cookie记录,有效时间60s
 			addCookie("mobile",User.mobile,60*60*24*7);//添加cookie记录,有效时间60s
-			
-			
-			console.log(User.nickname);
-			console.log(getCookieValue("nickname"));
+
 		}
 		
 	}
@@ -199,13 +202,13 @@ function saveUser()
 		User.id = getCookieValue("id");
 		User.nickname = getCookieValue("nickname");
 		User.username = getCookieValue("username");
-		User.headimage = getCookieValue("headimage");
+		
+		var h = getCookieValue("headimage")
+		User.headimage = h == "" ? "../images/face01.jpg" : h;
+		
 		User.openid = getCookieValue("openid");
 		User.mobile = getCookieValue("mobile");
 		
 		User.isLogin = User.id != "";
-		
-		
-		console.log(User.nickname);
 		
 	}

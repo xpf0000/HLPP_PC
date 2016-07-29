@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body ms-controller="listVC" class="ms-controller" id="listVC">
 	
 <!-- 加载头部 -->
 <div id="header"></div>	
@@ -29,7 +29,7 @@
 <div class="index_left mr30">
 
 <!-- 	左侧活动 -->
-<ul ms-controller="huodong" class="ms-controller">
+<ul>
 	
 <li ms-for="el in @info" class="index_left_list">
 <a ms-attr="{href: 'event_info.html?id='+el.id}"><img ms-attr="{src: el.url}" width="300" height="200" /></a>
@@ -43,7 +43,7 @@
 
 
 <!-- 点击加载下一页 -->
-<div ms-controller="pageClick" ms-click="@nextPageClick()" class="get_more ms-controller">{{@msg}}<img ms-attr="{hidden: @end}" src="../images/arrow.png" width="15" height="15" /></div>
+<div ms-click="@nextPageClick" class="get_more ms-controller">{{@msg}}<img ms-attr="{hidden: @end}" src="../images/arrow.png" width="15" height="15" /></div>
 </div>
 
 <!-- 加载右侧排行 -->

@@ -15,9 +15,9 @@ requirejs(['../main'], function (main) {
 	        onSuccess : function (item,event) {
 		        
 		        
-		        if($(this).attr("data-required-message") == LoginModel.msg || $(this).attr("data-message") == LoginModel.msg)
+		        if($(this).attr("data-required-message") == vm.msg || $(this).attr("data-message") == vm.msg)
 		        {
-			        LoginModel.msg = '';
+			        vm.msg = '';
 		        }
 
 		    },
@@ -25,14 +25,12 @@ requirejs(['../main'], function (main) {
 	        
             onError: function (reasons) {
 	            
-	            LoginModel.msg = '';
+	            vm.msg = '';
 	            
                 reasons.forEach(function (reason) {
 	                	                
-	               LoginModel.msg = reason.getMessage();
+	               vm.msg = reason.getMessage();
   
-                    console.log(reason.getMessage())
-                    
                    return;
                 })
                 
@@ -40,16 +38,14 @@ requirejs(['../main'], function (main) {
             
             onValidateAll: function (reasons) {
 	            
-	            console.log('%%%%%%%%%%%');
-	            	            
                 if (reasons.length) {
                     console.log('有表单没有通过')
                     
-                    LoginModel.msg = reasons[0].getMessage();
+                    vm.msg = reasons[0].getMessage();
                      
                 } else {
 	                
-	                LoginModel.msg = "";
+	                vm.msg = "";
 	                
                     console.log('全部通过');
      
@@ -61,14 +57,16 @@ requirejs(['../main'], function (main) {
         },
         
         
+        
+        
+        
 
     }); 
 
 
 	$("#join").load("./common/join.html",function(){
-		    
-		    
-		    avalon.scan(document.getElementById('joinView'));
+
+		    avalon.scan(document.getElementById('joinBar'));
 		    		     
 	});	
 	

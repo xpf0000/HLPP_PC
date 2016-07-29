@@ -3137,13 +3137,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var getHTML = __webpack_require__(34)
 	var onceWarn = true //只警告一次
 	function scan(nodes) {
+
 	    for (var i = 0, elem; elem = nodes[i++]; ) {
 	        if (elem.nodeType === 1) {
 	            var $id = getController(elem)
 
 	            var vm = avalon.vmodels[$id]
-	            
-	            //console.log(vm);
 	            
 	            if (vm && !vm.$element) {
 		            
