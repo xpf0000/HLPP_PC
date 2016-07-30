@@ -1,0 +1,17 @@
+<div ms-controller="changePassView" id="changePassView" class="u_page_right fl ms-controller">
+	<form ms-validate="@cpdvalidate">
+<div class="page_tit">修改密码 <span style="color: red"> {{@msg}} </span></div>
+<div class="page_prompt">如果您是第三方账号（腾讯QQ、微信等）登录，且尚未设定密码，<a href="re_password.html">点击这里</a>重设密码。</div>
+<div class="login_main re_p">
+<ul>
+<li><input id="pw" ms-rules='{required:true,minlength:6,maxlength:18}' ms-duplex="@pw" data-required-message="请输入原密码" data-message="密码长度为6-18位" maxlength="18" name="pw" type="password" placeholder="请输入原密码" class="login_text"/></li>
+
+<li><input id="pw1" ms-rules='{required:true,minlength:6,maxlength:18}' ms-duplex="@pw1" data-required-message="请输入新密码" data-message="密码长度为6-18位" maxlength="18" name="pw1" type="password" placeholder="新密码" class="login_text"/></li>
+
+<li><input id="pw2" ms-rules="{required:true,equalto:'pw1'}" ms-duplex="@pw2 | change" data-required-message="请输入确认新密码" data-message="新密码和确认新密码不一致" maxlength="18" name="paddword" type="password" placeholder="确认新密码" class="login_text"/></li>
+
+<li><button class="f16">确定修改</button></li>
+</ul>
+</div>
+	</form>
+</div>

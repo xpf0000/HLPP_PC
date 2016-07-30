@@ -19,6 +19,8 @@ requirejs(['main'], function (main) {
                     nickname: '',
                     username: '',
 				    headimage: '../images/face02.jpg',
+				    
+				    section: 1,
                                          	
                  });
                  
@@ -34,6 +36,34 @@ requirejs(['main'], function (main) {
 	                 location.href = "index.html";
 	                                     	    				
                  })	
+                 
+                 
+                 avalon.router.get("/changePass", function()
+                 {  
+	                 userVCModel.section = 1;
+	                 
+	                 changeClass(this.target);
+	                 
+	                 $("#right_main").html("");
+   
+				 
+					 $("#right_main").load("changePass.html",function(){
+
+					 	if(avalon.vmodels['changePassView'])
+					 	{
+						 	avalon.vmodels['changePassView'].$element = null;
+					 	}
+					 					  
+					 	require(['changePass'], function() {   
+						 	
+						 	avalon.scan(document.getElementById('changePassView'));						 			                 
+		              });
+ 
+	    			});
+
+	                                     	    				
+                 })	
+
 	
                  		
 	
@@ -41,6 +71,8 @@ requirejs(['main'], function (main) {
                  {
 	                 
 	                 changeClass(this.target);
+	                 
+	                 userVCModel.section = 1;
 	                 
 	                 $("#right_main").html("");
    
@@ -70,17 +102,39 @@ requirejs(['main'], function (main) {
 	                 
 	                 changeClass(this.target);
 	                 
+	                 if(userVCModel.section == 0)
+	                 {
+		                 activityType = this.query.type;		                 
+		                 avalon.vmodels['myhuodongView'].getData();
+	                 }
+	                 else
+	                 {
+		                 userVCModel.section = 0;
+	                 
+						 var type = this.query.type;	
+						 
+						 $("#right_main").html("");
+						 
+						 if(avalon.vmodels['myhuodongView'])
+					 	{				
+						 	avalon.vmodels['myhuodongView'].$element = null;
+					 	}
 
-	                 $("#right_main").html("");
-
-					 $("#right_main").load("activity_list.html",function(){
+						 $("#right_main").load("activity_list.html",function(){
 			                    
-			           require(['activity_list'], function() {
+						 require(['activity_list'], function() {
 				         
+				           	activityType = type;
+				           	
+						   	avalon.scan(document.getElementById('myhuodongView'));
+						   	
+						   	console.log(avalon.vmodels['myhuodongView'])
+				           
 				           initDatePicker();
 				           
-			          })})
- 
+			          	})})
+	                 }
+	                 
 	    			
                  })	;
                  		

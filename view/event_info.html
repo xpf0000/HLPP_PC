@@ -32,7 +32,11 @@
 <div class="e_user">发布人：<a href=""><img ms-attr="{src: @headimage}" width="50" height="50" /><span class="user_name">{{@nickname}}</span></a></div>
 <div class="e_label">标 签：<ul><li><a href="">徒步</a></li><li><a href="">骑行</a></li><li><a href="">赏花</a></li></ul><div class="clear"></div></div>
 <div class="e_no">限 额：<span>{{@a_number}}人</span></div>
-<div class="e_btn"><button class="btn sign_up" ms-click="@joinClick">我要报名</button><button class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">1688</span></button><div class="clear"></div></div>
+<div class="e_btn"><button class="btn sign_up" ms-click="@joinClick">我要报名</button>
+
+<button ms-click="@collectClick" class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">1688</span></button>
+	
+<div class="clear"></div></div>
 <div class="e_share">分享到：<span class="e_share_icon"><img src="../images/share.jpg" width="138" height="25" /></span></div>
 <div class="e_icon"><span class="view_times"></span>{{@view}}<span class="user_no"></span>{{@comment}}<span class="comment_icon"></span>{{@comment}}<span class="like_icon"></span>{{@comment}}</div>
 </div></div>

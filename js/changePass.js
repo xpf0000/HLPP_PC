@@ -1,16 +1,17 @@
-requirejs(['../main'], function (main) {
-
-	var vm = avalon.define({
-	    
-        $id: "joinView",
-        name: '',
-        sex: '0',
-        mob: '',
-        code: '',
+requirejs(['main'], function (main) {
+	require(['avalon','net','domReady!'], function(avalon) {
+		
+		var vm  = avalon.define({		
+	 			
+                    $id: "changePassView",	
+                    
+                    pw: '',
+                    pw1: '',
+                    pw2: '',
+                    
+                    msg: '' ,
         
-        msg: '' ,
-        
-        joinvalidate: {
+					cpdvalidate: {
 	        
 	        onSuccess : function (item,event) {
 		        
@@ -49,49 +50,43 @@ requirejs(['../main'], function (main) {
 	                
                     console.log('全部通过');
      
-                    doJoin();
+                    doChangePass();
                     
                 }
             },
             
         },
-         
-
-    }); 
-    
-    
-    
-    function doJoin()
-        {      
-	        var url = BaseUrl+"Public/Found/?service=Plans.addJoin&id="+id+"&uid="+User.id+"&username="+User.username;
+ 
+ 	});
+ 	
+ 	function doChangePass()
+ 	{
+	 	var url = BaseUrl+"Public/Found/?service=User.updatePass2&mobile="+User.mobile+"&oldpass="+vm.pw+"&newpass="+vm.pw2;
  
 			XHttpGet( url, function(data) 
 			{
+
 				var code = data.data.code;
 		
 				if(code == '0')
 				{	
 					
-					showDialog.hide();
-					getJoinUser();
-					alert("参加活动成功");
+					alert("密码修改成功");
 
 					return;
 				}
 		
-				vm.msg = data.data.msg ? data.data.msg : '参加失败,请重试';
+				vm.msg = data.data.msg ? data.data.msg : '密码修改失败,请重试';
 
 			});
- 
-        }   
 
-
-
-	$("#join").load("./common/join.html",function(){
-
-		    avalon.scan(document.getElementById('joinBar'));
-		    		     
-	});	
+ 	}
+                
+                
+        avalon.scan(document.getElementById('changePassView'));
 	
-	
-})
+		
+		console.log("changePass js loaded !!!!!")
+		
+		
+})})

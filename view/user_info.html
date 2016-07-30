@@ -25,12 +25,12 @@
 <div class="u_menu_b">
 <div class="u_menu_bc">
 <span class="u_menu_icon_01 db fl"></span><span class="u_menu_bc_name db fl">活动</span><span class="u_menu_arrow db fr"></span></div>
-<div class="u_menu_sc"><ul><li><a  href="#!/activity_list.html" >我发布的</a></li><li><a ms-click="@aClick" href="">我参与的</a></li><li><a ms-click="@aClick" href="">我收藏的</a></li></ul></div>
+<div class="u_menu_sc"><ul><li><a onclick="return User.loginClick()" href="#!/activity_list.html?type=0" >我发布的</a></li><li><a onclick="return User.loginClick()" href="#!/activity_list.html?type=1">我参与的</a></li><li><a onclick="return User.loginClick()" href="#!/activity_list.html?type=2">我收藏的</a></li></ul></div>
 </div>
 
 <div class="u_menu_b">
 <div class="u_menu_bc"><span class="u_menu_icon_02 db fl"></span><span class="u_menu_bc_name db fl">设置</span><span class="u_menu_arrow db fr"></span></div>
-<div class="u_menu_sc"><ul><li><a  class="u_menu_sc_c" id="nowSelect" href="#!/user_edit_info.html">资料设置</a></li><li><a ms-click="@aClick" href="edit_password.html">修改密码</a></li><li><a href="#!/logout">退出登录</a></li></ul></div>
+<div class="u_menu_sc"><ul><li><a  class="u_menu_sc_c" onclick="return User.loginClick()" id="nowSelect" href="#!/user_edit_info.html">资料设置</a></li><li><a onclick="return User.loginClick()" href="#!/changePass">修改密码</a></li><li><a href="#!/logout">退出登录</a></li></ul></div>
 </div>
 </div>
 

@@ -51,10 +51,11 @@ requirejs(['main'], function (main) {
 						  		if(code == '0')
 						  		{	
 							  		getComment();
+							  		alert("评论发表成功!")
 							  		return;
 								}
 		
-								var msg = data.data.msg ? data.data.msg : '登录失败,请重试';
+								var msg = data.data.msg ? data.data.msg : '评论发表失败,请重试';
 								
 								alert(msg);
 								
@@ -73,6 +74,33 @@ requirejs(['main'], function (main) {
 					  	
 					  	showDialog.show({id:'joinBar',bgcolor:'#000',opacity:60});
 	        
+        			},
+        			
+        			collectClick: function()
+        			{
+	        			
+	        			if(!User.loginClick())
+					  	{
+						  	return;
+					  	}
+	        			
+	        			var url = BaseUrl+"Public/Found/?service=Plans.addCollect&id="+id+"&uid="+User.id+"&username="+User.username;
+
+						  	XHttpGet( url, function(data) 
+						  	{		
+						  		var code = data.data.code;
+		
+						  		if(code == '0')
+						  		{		
+							  		alert("收藏成功!")
+							  		return;
+								}
+		
+								var msg = data.data.msg ? data.data.msg : '收藏失败,请重试';
+								
+								alert(msg);
+								
+							});
         			}
 				  	
                                       
@@ -114,19 +142,7 @@ requirejs(['main'], function (main) {
 					}
 				});
 			}
-			
-			function getJoinUser()
-			{	
-				var url = BaseUrl+"Public/Found/?service=Plans.getJoinList&id="+id;   
-				XHttpGet( url, function(data) 
-				{
-					if(data.data.info.length > 0)
-					{
-						vm.joinUser = data.data.info;
-					}
-				});
-			}
-			
+
 			function getComment()
 			{	
 				var url = BaseUrl+"Public/Found/?service=Plans.getCommentList&id="+id;   
@@ -153,7 +169,18 @@ requirejs(['main'], function (main) {
 })})
 
 
-
+function getJoinUser()
+			{	
+				var url = BaseUrl+"Public/Found/?service=Plans.getJoinList&id="+id;   
+				XHttpGet( url, function(data) 
+				{
+					if(data.data.info.length > 0)
+					{						
+						avalon.vmodels['eventInfoVC'].joinUser = data.data.info;
+					}
+				});
+			}
+			
 
 function code_show(obj, sType) 
 { 

@@ -3,36 +3,21 @@
 <link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css"/>
 <!--日期控件-->
 
-<div class="u_page_right fl">
+<div class="u_page_right fl ms-controller" ms-controller="myhuodongView" id="myhuodongView">
 <div class="page_tit">我发布的活动<span class="a_list_search">从<input name="start_date" type="text" class="a_list_search_date some_class" value="" id="some_class_1"/>到<input name="end_date" type="text" class="a_list_search_date some_class" value="" id="some_class_2"/><select name="state">
   <option value="1">进行中</option>
 </select><button>搜索</button></span></div>
 <div class="a_list">
 <ul>
-<li>
-<a href="event_info.html"><img src="../images/temp/a1.jpg" width="170" height="114" border="0"></a>
-<h3><a href="event_info.html">相约小浪底体验中原地区首个森林氧吧山地车主题公园</a></h3>
+	
+<li ms-for="el in @info">
+<a ms-attr="{href: 'event_info.html?id='+el.id}"><img ms-attr="{src: el.url}" width="170" height="114" border="0"></a>
+<h3><a ms-attr="{href: 'event_info.html?id='+el.id}">{{el.title}}</a></h3>
 <div class="a_list_time f14">活动时间：2016-06-09<span class="a_list_lable01">进行中</span></div>
 <div class="a_list_no">报名人数：201人</div>
 </li>
-<li>
-<a href="event_info.html"><img src="../images/temp/a2.jpg" width="170" height="114" border="0"></a>
-<h3><a href="event_info.html">《极限户外洛阳唐朝车队》周六发队大雨淋</a></h3>
-<div class="a_list_time f14">活动时间：2016-06-09<span class="a_list_lable02">待审核</span></div>
-<div class="a_list_no">报名人数：201人</div>
-</li>
-<li>
-<a href="event_info.html"><img src="../images/temp/a3.jpg" width="170" height="114" border="0"></a>
-<h3><a href="event_info.html">【风迹俱乐部】6.5（周日）割艾采冬苓草休闲游</a></h3>
-<div class="a_list_time f14">活动时间：2016-06-09<span class="a_list_lable03">未通过</span></div>
-<div class="a_list_no">报名人数：201人</div>
-</li>
-<li>
-<a href="event_info.html"><img src="../images/temp/a4.jpg" width="170" height="114" border="0"></a>
-<h3><a href="event_info.html">【骑友驿站】铁二梦想队6.4日周六铁人两项活动邀请帖</a></h3>
-<div class="a_list_time f14">活动时间：2016-06-09<span class="a_list_lable04">已过期</span></div>
-<div class="a_list_no">报名人数：201人</div>
-</li>
+
+
 </ul>
 </div>
 </div>
