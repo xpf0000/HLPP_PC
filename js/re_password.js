@@ -9,41 +9,12 @@ requirejs(['main'], function (main) {
 	    
     $("#mob").keydown(onlyNumber);
     
-    
-/*   遮罩  需要设计上层遮罩
-    var opts = {            
-            lines: 13, // 花瓣数目
-            length: 20, // 花瓣长度
-            width: 10, // 花瓣宽度
-            radius: 30, // 花瓣距中心半径
-            corners: 1, // 花瓣圆滑度 (0-1)
-            rotate: 0, // 花瓣旋转角度
-            direction: 1, // 花瓣旋转方向 1: 顺时针, -1: 逆时针
-            color: '#5882FA', // 花瓣颜色
-            speed: 1, // 花瓣旋转速度
-            trail: 60, // 花瓣旋转时的拖影(百分比)
-            shadow: false, // 花瓣是否显示阴影
-            hwaccel: false, //spinner 是否启用硬件加速及高速旋转            
-            className: 'spinner', // spinner css 样式名称
-            zIndex: 2e9, // spinner的z轴 (默认是2000000000)
-            top: 'center', // spinner 相对父容器Top定位 单位 px
-            left: 'center'// spinner 相对父容器Left定位 单位 px
-        };
-    
-		
-    var target = document.getElementById('main');
-	var spinner = new Spinner().spin(target);
-*/
-
-
-    
     vm = avalon.define({
-        $id: "validate1",
+        $id: "re_passwordVC",
         mob: "",
         pw: '',
         cpw: '',
         paddword: '',
-        agree: false,
         code: '获取验证码',
         time: 60,
         message: '',
@@ -92,53 +63,20 @@ requirejs(['main'], function (main) {
             },
             
             onValidateAll: function (reasons) {
-                if (reasons.length) {
+	            
+                if (reasons.length) 
+                {
                     console.log('有表单没有通过')
-                    
-                    
+  
                     vm.message = reasons[0].getMessage();
-                    
-                    reasons.forEach(function (reason) {
-	                
-					switch(reason.element.id)
-					{
-						case 'mob' :
-						console.log('手机号验证未通过!!!')
-						vm.mobMsg = reason.getMessage();
-						break;
-						
-						case 'pw' :
-						console.log('密码验证未通过!!!')
-						vm.pwMsg = reason.getMessage();
-						break;
-						
-						case 'cpw' :
-						console.log('确认密码验证未通过!!!')
-						vm.cpwMsg = reason.getMessage();
-						break;
-						
-						case 'checkbox-2-1' :
-						console.log('同意协议验证未通过!!!')
-						vm.agreeMsg = reason.getMessage();
-						break;
-						
-						default :
-						break;
-					}
-					
-                    console.log(reason.element.id);
-                    
-                })
 
-                    
-                    
                 } else {
 	                
 	                vm.message = "";
 	                
                     console.log('全部通过');
      
-                    doRegist();
+                    doChange();
                     
                 }
             }
@@ -150,38 +88,12 @@ requirejs(['main'], function (main) {
 			sendCode();
 		
 		},
-		
-		wxLogin: function() {
-		
-			alert("点击微信登录");
-		
-		},
-
-        qqLogin: function() {
-		
-			alert("点击QQ登录");
-		
-		},
-        
-        
-        
+	        
         
     })
     
     
-    avalon.validators.checked = {
-	   	    
-        get: function (value, field, next) {
-            next(value)
-            
-            vm.message = '请同意网站注册协议';
-            
-            return value
-        }
-    }
-    
-    
-    avalon.scan(document.getElementById('registVC'));
+    avalon.scan(document.getElementById('re_passwordVC'));
     
     initTime();
     
@@ -191,28 +103,28 @@ requirejs(['main'], function (main) {
 });
 
 
-function doRegist()
+function doChange()
 {
 	
-	var url = BaseUrl+"Public/Found/?service=User.register&mobile="+vm.mob+"&password="+vm.pw+"&code="+vm.paddword+"&nickname=";
+	var url = BaseUrl+"Public/Found/?service=User.updatePass&mobile="+vm.mob+"&password="+vm.pw+"&code="+vm.paddword;
  
 	
 	
 	XHttpGet( url, function(data) 
 	{
 		
-		console.log(data);
-		
 		var code = data.data.code;
 		
 		if(code == '0')
 		{	
-			location.href = "user_info.html";
+			alert("密码重置成功");
 			
 			return;
 		}
 		
-		vm.message = data.data.msg ? data.data.msg : '注册失败,请重试';
+		vm.message = data.data.msg ? data.data.msg : '重置密码失败,请重试';
+		
+		//alert(vm.message);
 
 	});
 	
@@ -231,14 +143,14 @@ function sendCode()
 	{
 		var code = data.data.code;
 		
-		if(code == '0')
+		if(code == '1')
 		{
-			vm.message = '该手机号码已注册,请更换手机号';
+			vm.message = '该手机号码尚未注册,请确认手机号';
 			return;
 		}
 		
 
-		var url = BaseUrl+"Public/Found/?service=User.smsSend&mobile="+vm.mob+"&type=1";
+		var url = BaseUrl+"Public/Found/?service=User.smsSend&mobile="+vm.mob+"&type=2";
    
 		
 	

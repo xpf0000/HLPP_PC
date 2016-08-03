@@ -7,7 +7,7 @@
 .v_menu_w ul li { float:left;}
 .v_menu_w ul li a {  vertical-align:middle; display:block; text-align:center;}
 .v_menu_w ul li .current { vertical-align:middle; display:block;text-align:center;font-size:16px;}
-.v_menu_w .search input {background:#2fbc78; border:0 none;border-bottom-left-radius:20px;border-top-left-radius:20px; color:#bfe5cf; font-size:13px;width:220px; height:32px; float:left; margin:14px 0px 14px 50px; text-align:left; padding-left:18px;}
+.v_menu_w .search input {background:#2fbc78; border:0 none;border-bottom-left-radius:20px;border-top-left-radius:20px; color:#fff; font-size:13px;width:220px; height:32px; float:left; margin:14px 0px 14px 50px; text-align:left; padding-left:18px;}
 .v_menu_w .search button {background:#2fbc78; border:0 none;border-bottom-right-radius:20px;border-top-right-radius:20px; color:#fff; font-size:13px;width:30px; height:32px; float:left; margin:14px 10px 14px 0px; text-align:center; cursor:pointer;}
 .v_menu_w .search button .search_icon {background-position:-2px -68px; margin-left:-15px; }
 .share_icon , .search_icon , .v_menu_w .creat_info span , .time_icon, .view_times , .user_no ,.comment_icon ,.like_icon ,.favorites_icon ,.e_zambia_icon ,.e_comment_icon{ background:url(../images/v_icon.png); background-repeat:no-repeat;width:21px; height:21px;display:inline-block;vertical-align:middle; cursor:pointer;}

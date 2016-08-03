@@ -1,4 +1,4 @@
-requirejs(['../main'], function (main) {
+requirejs(['main'], function (main) {
 
 	var vm = avalon.define({
 	    
