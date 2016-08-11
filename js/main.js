@@ -3,7 +3,7 @@ var BaseUrl = "http://182.92.70.85/hlppapi/";
 require.config({
     baseUrl: '../lib',  //相对于index.html页面文件的地址
     paths:{   //这里配置的地址，都是相对于上方的baseUrl的
-        avalon: 'avalon.2.1.8.min',
+        avalon: 'avalon.2.1.8',
         domReady:'domReady',
         mmHistory: 'mmHistory',
         mmRouter: 'mmRouter',
@@ -15,7 +15,7 @@ require.config({
         foucs : 'foucs',
         mmAnimate : 'mmAnimate',
         validate : "jquery.validate.min",
-        wangEditor: 'wangEditor/js/wangEditor.min',
+        wangEditor: 'wangEditor/js/wangEditor',
         net: 'XRequest',
         spin: 'spin.min',
         header: '../js/header',
@@ -30,6 +30,7 @@ require.config({
         
     },
     shim:{
+	    datepicker: { exports: "datepicker", deps: ['jquery']},
 	    wangEditor: { exports: "wangEditor", deps: ['jquery']},
         header: { exports: "header" },
         mmAnimate:{ deps: ['avalon']},  

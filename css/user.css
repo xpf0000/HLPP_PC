@@ -59,8 +59,11 @@ body { background:#f2f2f2;}
 .form_group .form_li .form_li_photo ,.form_group .form_li .form_li_photo_font {display:block;height:58px; line-height:58px; margin-left:12px;color:#898989;}
 .form_group .form_li .form_li_photo {background:url(../images/add_photo.png); cursor:pointer;width:58px;}
 
-.form_li_label {margin-top:-43px; margin-left:90px;}
-.form_li_label ul li { display:inline-block; float:left; background:#e0dfdf; height:25px; line-height:25px; text-align:center; padding:0 15px;border-radius:15px; margin:10px 0px 10px 10px; font-size:14px; cursor:pointer;}
+.form_li_label {margin-top:-12px; margin-bottom: 20px; margin-left:90px;display: flex;
+    justify-content: left; }
+    
+.form_li_label ul li { display:inline-block; float:left; /* background:#454382; height:25px; line-height:25px; text-align:center; padding:0 15px;border-radius:15px; margin:10px 0px 10px 10px; font-size:14px; cursor:pointer; */}
+
 .form_li_label ul li a { color:#7c7c7c;}
 .form_li_label span { color:#b1b0b0; float:left;}
 .success_info { margin:0 auto; width:730px; height:350px; padding:20px;}
