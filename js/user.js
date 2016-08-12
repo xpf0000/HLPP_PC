@@ -100,15 +100,22 @@ requirejs(['main'], function (main) {
                  avalon.router.get("/activity_list.html", function()
                  {
 	                 
-	                 changeClass(this.target);
+	                 
 	                 	                 
 	                 if(userVCModel.section == 0)
 	                 {
+		                 selectedItem.removeClass("u_menu_sc_c");
+						 $(this.target).addClass( "u_menu_sc_c" );
+						 selectedItem = $(this.target);
+	                 
 		                 activityType = this.query.type;		                 
 		                 avalon.vmodels['myhuodongView'].getData();
+		                 
 	                 }
 	                 else
 	                 {
+		                 changeClass(this.target);
+		                 
 		                 userVCModel.section = 0;
 	                 
 						 var type = this.query.type;	

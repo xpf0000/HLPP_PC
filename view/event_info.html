@@ -34,7 +34,7 @@
 <div class="e_no">限 额：<span>{{@a_number}}人</span></div>
 <div class="e_btn"><button class="btn sign_up" ms-click="@joinClick">我要报名</button>
 
-<button ms-click="@collectClick" class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">1688</span></button>
+<button ms-click="@collectClick" class="btn favorites"><span class="favorites_icon"></span><span>收藏</span><span class="user_num">{{@collect}}</span></button>
 	
 <div class="clear"></div></div>
 <div class="e_share">分享到：<span class="e_share_icon"><img src="../images/share.jpg" width="138" height="25" /></span></div>
@@ -48,7 +48,7 @@
 <div class="page_tit mt15">活动详情</div>
 <div class="page_content" ms-html="@content"></div>
 
-  <div class="b_icon_btn rel"><button class="wx_share"><span class="wx_icon"></span>分享到微信</button><button class="favorite"><span class="favorite_icon"></span><span>收藏</span><span class="user_num">1688</span></button><button class="warning" onClick="showDialog.show({id:'report_box',bgcolor:'#000',opacity:60});"><span class="warning_icon"></span>举报此活动</button></div>
+  <div class="b_icon_btn rel"><button class="wx_share"><span class="wx_icon"></span>分享到微信</button><button class="favorite"><span class="favorite_icon"></span><span>收藏</span><span class="user_num">{{@collect}}</span></button><button class="warning" onClick="showDialog.show({id:'report_box',bgcolor:'#000',opacity:60});"><span class="warning_icon"></span>举报此活动</button></div>
   <div class="page_tit mt15">已报名</div>
   <div class="user_face">
   <ul>

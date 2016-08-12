@@ -25,6 +25,7 @@ requirejs(['main'], function (main) {
 				  	
 				  	a_number: "",
 				  	url: "",
+				  	collect: '',
 				  	
 				  	editComment: '',
 				  	
@@ -107,6 +108,7 @@ requirejs(['main'], function (main) {
 						  		if(code == '0')
 						  		{		
 							  		alert("收藏成功!")
+							  		vm.collect = ""+(Number(vm.collect)+1);
 							  		return;
 								}
 		

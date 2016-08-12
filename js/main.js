@@ -1,5 +1,7 @@
 var BaseUrl = "http://182.92.70.85/hlppapi/";
 
+//require.js  全局配置  
+
 require.config({
     baseUrl: '../lib',  //相对于index.html页面文件的地址
     paths:{   //这里配置的地址，都是相对于上方的baseUrl的
@@ -15,7 +17,7 @@ require.config({
         foucs : 'foucs',
         mmAnimate : 'mmAnimate',
         validate : "jquery.validate.min",
-        wangEditor: 'wangEditor/js/wangEditor',
+        wangEditor: 'wangEditor/js/wangEditor.min',
         net: 'XRequest',
         spin: 'spin.min',
         header: '../js/header',

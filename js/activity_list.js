@@ -1,7 +1,7 @@
 var activityType = 0;
 
 requirejs(['main'], function (main) {
-     require(['avalon','domReady!'], function(avalon) {
+     require(['avalon','datepicker','domReady!'], function(avalon) {
 	     
 	  	 
 	     var vm  = avalon.define({		
@@ -22,7 +22,7 @@ requirejs(['main'], function (main) {
 	                    
 	                    if(activityType == 0)
 	                    {
-		                    
+		                    url =  BaseUrl+"Public/Found/?service=Users.getplanlist&uid="+User.id;
 	                    }
 	                    else if(activityType == 1)
 	                    {
