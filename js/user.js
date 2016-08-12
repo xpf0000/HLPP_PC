@@ -101,7 +101,7 @@ requirejs(['main'], function (main) {
                  {
 	                 
 	                 changeClass(this.target);
-	                 
+	                 	                 
 	                 if(userVCModel.section == 0)
 	                 {
 		                 activityType = this.query.type;		                 
@@ -128,7 +128,7 @@ requirejs(['main'], function (main) {
 				           	
 						   	avalon.scan(document.getElementById('myhuodongView'));
 						   	
-						   	console.log(avalon.vmodels['myhuodongView'])
+						   	//console.log(avalon.vmodels['myhuodongView'])
 				           
 				           initDatePicker();
 				           

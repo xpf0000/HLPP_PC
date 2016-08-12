@@ -34,6 +34,11 @@ requirejs(['main'], function (main) {
 				  	
 				  	postComment: function()
 				  	{
+					  	if(Number(id) == 0)
+					  	{
+						  	return;
+					  	}
+					  	
 					  	if(!User.loginClick())
 					  	{
 						  	return;
@@ -67,6 +72,11 @@ requirejs(['main'], function (main) {
 				  	
 				  	joinClick: function()
 				  	{
+					  	if(Number(id) == 0)
+					  	{
+						  	return;
+					  	}
+					  	
 					  	if(!User.loginClick())
 					  	{
 						  	return;
@@ -78,6 +88,10 @@ requirejs(['main'], function (main) {
         			
         			collectClick: function()
         			{
+	        			if(Number(id) == 0)
+					  	{
+						  	return;
+					  	}
 	        			
 	        			if(!User.loginClick())
 					  	{
@@ -108,11 +122,28 @@ requirejs(['main'], function (main) {
             
             avalon.scan(document.getElementById('eventInfoVC'));
             
-            getInfo();
-            getJoinUser();
-            getComment();
+            if(Number(id) > 0)
+            {
+	            getInfo();
+				getJoinUser();
+				getComment();
+            }
+            else
+            {
+	            var model = JSON.parse(localStorage["hlpp_review"]);
+	            
+	            if(model)
+	            {	            		            
+		            for(var p in model) 
+					{ 
+						vm[p]=model[p]; 
+					} 
+    
+	            }
+	            
+            }
             
-            
+  
             function getInfo()
 			{	
 				var url = BaseUrl+"Public/Found/?service=Plans.getArticle&id="+id;   

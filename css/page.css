@@ -52,3 +52,5 @@ e_share .e_share_icon { display:inline-block;}
 .comment_body p { line-height:200%; font-size:14px;}
 
 .qr_code_show { display:none; width:240px; height:255px; line-height:255px; right:210px; top:40px;filter:}
+
+.event_info {width:1180px;height: 430px;overflow: hidden;}

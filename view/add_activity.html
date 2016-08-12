@@ -47,11 +47,11 @@
 
 <div class="form_li"><span class="info_text">活动时间<em class="red">*</em></span><span class="form_li_time">开始：</span>
 	
-	<input name="s_time" type="text" placeholder="2016/06/21" id="some_class_1" class="info_input small_input a_list_search_date some_class"/>
+	<input ms-duplex="@s_time" name="s_time" type="text" placeholder="2016/06/21" id="some_class_1" class="info_input small_input a_list_search_date some_class"/>
 	
 	<span class="form_li_time">结束：</span>
 	
-	<input name="e_time" type="text" placeholder="2016/06/21" id="some_class_2" class="info_input small_input a_list_search_date some_class"/>
+	<input ms-duplex="@e_time" name="e_time" type="text" placeholder="2016/06/21" id="some_class_2" class="info_input small_input a_list_search_date some_class"/>
 	
 </div>
 
@@ -105,7 +105,7 @@
 
 
 
-<div class="form_li tc"><button class="form_li_submit f16" style="width:300px;">确定发布</button><button class="form_li_preview f16" onclick="javascript:window.location.href='event_info.html';">预览</button></div>
+<div class="form_li tc"><button class="form_li_submit f16" onclick="return doSubmit()" style="width:300px;">确定发布</button><button class="form_li_preview f16" ms-click="@review">预览</button></div>
 <div class="form_li tc"></div>
 
 	</form>

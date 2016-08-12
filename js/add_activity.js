@@ -35,6 +35,8 @@ requirejs(['main'], function (main) {
 					
 					category: [],
 					
+					submitType: 0,
+					
 					msg: '',
 					
               
@@ -93,8 +95,15 @@ requirejs(['main'], function (main) {
 	                    return;
                     }
                     
-     
-                    doAdd();
+					if(submitType == 0)
+					{
+						doAdd();
+					}
+					else
+					{
+						doReview();
+					}
+                    
                     
                 }
             },
@@ -102,6 +111,14 @@ requirejs(['main'], function (main) {
         },
         
                 
+        review: function()
+        {
+	        console.log("点击预览")
+	        
+	        submitType = 1
+	               
+        },
+                  
         uploadPic: function()
         {
 	        console.log("点击上传图片!!!");
@@ -136,10 +153,39 @@ requirejs(['main'], function (main) {
                     
                     
         });
+        
+        function doReview()
+        {
+	        console.log("进入预览页面!!!")
+	        	   
+	        if (localStorage)
+	        {
+		        var details = {id:"0","title":vm.title,"view":"0","comment":"0","content":vm.content,"headimage":User.headimage,"nickname":User.nickname,"price":vm.price,"s_time_str":vm.s_time,"e_time_str":vm.e_time,"a_number":vm.a_number,"url":vm.pic};
+		        var str = JSON.stringify(details);
+		        
+		        localStorage["hlpp_review"] = str;
+		        
+		        console.log(str);
+		        
+		        location.href = "event_info.html?id=0";
+ 
+	        }
+	        else
+	        {
+		        alert("当前浏览器版本过低,暂不支持预览功能");
+	        }
+	        
+	        
+	        
+	        
+        }
             
         function doAdd()
         {
-	        
+	     
+	     	vm.s_time = vm.s_time.replace("/", "-")
+	     	vm.e_time = vm.e_time.replace("/", "-")
+	     	   
 	        url = BaseUrl+"Public/Found/?service=Plans.addpic";
 	 
 			var form = new FormData();
@@ -234,3 +280,20 @@ requirejs(['main'], function (main) {
 		 avalon.scan(document.getElementById('add_activityVC'));
 	     
 })})
+
+var submitType = 0
+
+function doSubmit()
+{
+	             
+	        if(!User.loginClick())
+	        {
+		        return false
+	        }
+	        console.log("点击提交")
+	        
+	        submitType = 0
+	        
+	        return true
+ }
+

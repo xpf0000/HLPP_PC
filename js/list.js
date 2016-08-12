@@ -1,5 +1,6 @@
 
 var page = 1;
+var keyword = "";
 
 requirejs(['main'], function (main) {
      
@@ -32,7 +33,20 @@ requirejs(['main'], function (main) {
     
     function getTj()
 	{
-		var url = BaseUrl+"Public/Found/?service=plans.getlist&page="+page+"&perNumber=20";
+		keyword = $.getUrlParam('key');
+		
+		var url;
+		
+		if(keyword)
+		{
+			url = BaseUrl+"Public/Found/?service=Plans.search&page="+page+"&perNumber=20&keyword="+keyword;
+		}
+		else
+		{
+			url = BaseUrl+"Public/Found/?service=plans.getlist&page="+page+"&perNumber=20";
+		}
+		
+		
 
 		XHttpGet( url, function(data) 
 		{

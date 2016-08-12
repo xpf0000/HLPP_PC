@@ -16,6 +16,7 @@ requirejs(['main'], function (main) {
         username: '',
         truename: '',
         headimage: '../images/face01.png',
+        key: '',
         openid: '',
         mobile: '',
         
@@ -33,6 +34,11 @@ requirejs(['main'], function (main) {
 		        return false;
 	        }
 	        
+        },
+        
+        toSearch: function()
+        {
+	        location.href = "list.html?key="+User.key;
         }
 
     }); 
